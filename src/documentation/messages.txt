@@ -1,0 +1,48 @@
+### POST Send a new message
+
+Resource URL: /communications/emails/sender
+
+Headers:
+
+* x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjM2MjQ5MDgsImV4cCI6MTUzMzYyNDkwN30.GPf--Qs5ftDqhbj-vBXSiunPKEVIFcd1clS7Rz8CXpE
+
+Sample request body:
+
+{
+  "emailsList":"3",
+  "subject":"TEST",
+  "body":"<p>TESTBODY</p>\n",
+  "hiringClientId":"1",
+  "subcontractorId":1, 
+  "dueDate":"2018-05-16T00:00:00.000Z", 
+  "taskDetail":"This is a test task detail"
+}
+
+Sample response OK:
+
+{
+	"success": true
+}
+
+Sample response ERROR:
+
+{
+  "success": false,
+  "data": {
+    "errorCode":99999,
+    "description":"Some description related with the problem",
+    "error": {} //will have extra info when error is not categorized
+  }
+}
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10004 = This email is already in use
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+

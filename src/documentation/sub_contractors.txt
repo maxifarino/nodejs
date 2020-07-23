@@ -1,0 +1,1268 @@
+### GET Invite values for the registration form
+
+Resource URL: /subcontractors/invitevalues
+
+Headers:
+
+x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjQxNzIyOTEsImV4cCI6MTUzNDE3MjI5MH0.tGeOBO-4Za1Yu4mPqJpcZ_jWTKbX8sTDaKd7S92WdcU
+
+Query Parameters:
+
+* subcontractorId
+* hiringClientId
+
+Sample response OK when link was already visited (In this case LinkVisitedDate has the date time of ):
+
+{
+    "success": true,
+    "data": {
+        "linkAlreadyVisited": true
+    }
+}
+
+
+Sample response OK when link was not previously visited:
+
+{
+    "success": true,
+    "data": {
+        "userExists": 1,
+        "subContractor": {
+            "id": 1,
+            "name": "AAA SC 1",
+            "fullName": "Peter Tester",
+            "phone": "456-456-456",
+            "email": "homero@accelone.com",
+            "linkVisitedDate": null
+        },
+        "hiringClientId": 1,
+        "trades": [
+            {
+                "id": 10,
+                "value": "355",
+                "Description": "006000 Project Forms"
+            },
+            {
+                "id": 2,
+                "value": "625",
+                "Description": "Other"
+            }
+        ],
+        "titles": [
+            {
+                "id": 0,
+                "title": "None"
+            },
+            {
+                "id": 1,
+                "title": " OFFICE MANAGER"
+            }
+        ],
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjMwMTkzODYsImV4cCI6MTUzMzAxOTM4NX0.Aee4zvkZTvsAZPajnLTQFGpdnZ7fddPp6u3tZwF9Ayk",
+        "linkAlreadyVisited": false
+    }
+}
+
+Sample response ERROR:
+
+{
+    "success": false,
+    "data": {
+      "errorCode":99999,
+      "description":"Some description related with the problem",
+      "error": {} //will have extra info when error is not categorized
+    }
+}
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+
+
+
+
+### GET Subcontractor get submission link
+
+Resource URL: /subcontractors/submissionlink
+
+Headers:
+
+x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjQxNzIyOTEsImV4cCI6MTUzNDE3MjI5MH0.tGeOBO-4Za1Yu4mPqJpcZ_jWTKbX8sTDaKd7S92WdcU
+
+Query Parameters:
+
+* subcontractorId
+* hiringClientId
+
+Sample response OK:
+
+{
+    "success": true,
+    "link": "http://104.236.90.5:5000/form-link/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJoaXJpbmdDbGllbnRJZCI6IjEiLCJzdWJjb250cmFjdG9ySWQiOiIxIiwiZm9ybUlkIjo3MiwidXNlcklkIjozLCJzYXZlZEZvcm1JZCI6MjcsImlhdCI6MTUyODEyOTQ3OX0.6w6z20BLwLWIsqXFnuFZVJuDFhkx2ktEsDoFfzxRbVo"
+}
+
+Sample response ERROR:
+
+{
+    "success": false,
+    "data": {
+      "errorCode":99999,
+      "description":"Some description related with the problem",
+      "error": {} //will have extra info when error is not categorized
+    }
+}
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+
+
+
+### POST Change subcontractor tier rate
+
+Resource URL: /subcontractors/changeTieRate
+
+Headers:
+
+* x-access-token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjI3NzgwNjksImV4cCI6MTUzMjc3ODA2OH0.FYY6jAv3j9uzGNPkbEMruLHkzZKI3bErtYSaqKB9SDw"
+
+Body Parameters:
+
+{
+  "subcontractorId":"1",
+  "tierRatingId":"2"
+}
+
+* NOTE that fields is case sensitive right now. 
+
+Sample response OK:
+    {
+        "success": true
+    }
+
+
+Sample response ERROR:
+
+  {
+    "success": false,
+    "data": {
+      "errorCode":99999,
+      "description":"Some description related with the problem",
+      "error": {} //will have extra info when error is not categorized
+    }
+  }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+
+### POST Register a subcontractor
+
+Resource URL: /subcontractors/register
+
+Headers:
+
+* x-access-token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjI3NzgwNjksImV4cCI6MTUzMjc3ODA2OH0.FYY6jAv3j9uzGNPkbEMruLHkzZKI3bErtYSaqKB9SDw"
+
+Body Parameters:
+
+{
+  "user": {
+    "firstName": "Jackie",
+    "lastName": "Remedy",
+    "titleId": "7",
+    "phone": "7891234567",
+    "cellPhone": "45645646546",
+    "email": "sfein+06054001@certfocus.com",
+    "pass": "test1234"
+  },
+  "subcontractor": {
+    "id": 4990,
+    "hiringClientId": 1,
+    "companyName": "Los Angeles Dodgers",
+    "tradeId": "22",
+    "secTradeId": "0",
+    "terTradeId": "0",
+    "address": "Test St",
+    "city": "Los Angeles",
+    "state": "CA",
+    "zipcode": "98033",
+    "mainEmail": "sfein+06054001@certfocus.com",
+    "taxId": "46-12345",
+    "agree": true,
+     "countryId":1
+  }
+}
+
+* NOTE that fields is case sensitive right now. 
+
+Sample response OK:
+
+    {
+        "success": true
+    }
+
+
+Sample response ERROR:
+
+  {
+    "success": false,
+    "data": {
+      "errorCode":99999,
+      "description":"Some description related with the problem",
+      "error": {} //will have extra info when error is not categorized
+    }
+  }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+### GET Subcontractor header data
+
+Resource URL: /subcontractors/brief
+
+Headers:
+
+* nothing required
+
+Query Parameters:
+
+* inviteCode:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJoaXJpbmdDbGllbnRJZCI6MSwic3ViY29udHJhY3RvcklkIjoxLCJpYXQiOjE1Mjc3NzE2NzF9.3DB_MMqherlOf61QxNG64zrsTErCu4_8aQ3nIdaQcTg
+
+Sample response OK:
+
+{
+    "success": true,
+    "data": {
+        "userExists": 1,
+        "subContractor": {
+            "id": 1,
+            "fullName": "Peter Tester",
+            "phone": "456-456-456",
+            "email": "luis@accelone.com"
+        },
+        "timeZones": [
+            {
+                "id": 0,
+                "value": "None",
+                "description": "None"
+            },
+            {
+                "id": 134,
+                "value": "Line Islands Daylight Time",
+                "description": "(UTC+14:00) Kiritimati Island"
+            }
+        ],
+        "trades": [
+            {
+                "id": 10,
+                "value": "355",
+                "Description": "006000 Project Forms"
+            },
+            {
+                "id": 219,
+                "value": "564",
+                "Description": "416000 Mobile Plant Equipment"
+            },
+            {
+                "id": 246,
+                "value": "591",
+                "Description": "487000 Electrical Power Generation Testing\"</select>"
+            }
+        ],
+        "titles": [
+            {
+                "id": 0,
+                "title": "None"
+            },
+            {
+                "id": 1,
+                "title": " OFFICE MANAGER"
+            },
+            {
+                "id": 2,
+                "title": " PRESIDENT"
+            },
+            {
+                "id": 407,
+                "title": "WEBMASTER"
+            }
+        ],
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjMwMTkzODYsImV4cCI6MTUzMzAxOTM4NX0.Aee4zvkZTvsAZPajnLTQFGpdnZ7fddPp6u3tZwF9Ayk",
+        "logo": "/9j/4AAQSkZJRgABAgEASABIAAD/4QqORXhpZgAATU0AKgAAAAgACgEOAAIAAAAyAAAAhgESAAMAAAABAAEAAAEaAAUAAAABAAAAuAEbAAUAAAABAAAAwAEoAAMAAAABAAIAAAExAAIAAAAcAAAAyAEyAAIAAAAUAAAA5AE7AAIAAAAtAAAA+IKYAAIAAAAgAAABJYdpAAQAAAABAAABSAAAAXRDcmVzY2VudCBNb29uIERlc2t0bZnaGlqa2xtbm9ic3R1dnd4eXp7fH/9oADAMBAAIRAxEAPwDypJJJJSkkkklKSSSSUpJauB9Wup5lTcl7RiYjjpkXy1pHM1sAdbb7fzq6/TUMzG6ZhEsa9+XYCQSYrZ/mt9R27/rqSnNSTucHGQA0eA4/FMkpSSSSSlJJJID//Z"
+    }
+}
+
+Sample response ERROR:
+
+  {
+    "success": false,
+    "data": {
+      "errorCode":99999,
+      "description":"Some description related with the problem",
+      "error": {} //will have extra info when error is not categorized
+    }
+  }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+
+
+
+
+
+
+### GET Subcontractor header data
+
+Resource URL: /subcontractors/brief
+
+Headers:
+
+* x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjMwMTkzODYsImV4cCI6MTUzMzAxOTM4NX0.Aee4zvkZTvsAZPajnLTQFGpdnZ7fddPp6u3tZwF9Ayk
+
+Query Parameters:
+
+* hiringClientId
+
+Sample response OK:
+
+{
+    "success": true,
+    "data": [
+        {
+            "id": 1,
+            "name": "AAA Test SC"
+        },
+        {
+            "id": 1438,
+            "name": "ABC"
+        },
+        {
+            "id": 1436,
+            "name": "Certfocus"
+        },
+        {
+            "id": 1460,
+            "name": "SC 100"
+        },
+        {
+            "id": 2,
+            "name": "SC2"
+        },
+        {
+            "id": 1437,
+            "name": "Sina"
+        }
+    ]
+}
+
+Sample response ERROR:
+
+  {
+    "success": false,
+    "data": {
+      "errorCode":99999,
+      "description":"Some description related with the problem",
+      "error": {} //will have extra info when error is not categorized
+    }
+  }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+
+
+### GET Subcontractor header data
+
+Resource URL: /subcontractors/headerdetails
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Query Parameters:
+
+* subcontractorId
+* hiringClientId
+
+Sample response OK:
+
+{
+    "success": true,
+    "data": {
+        "savedFormId": 99,
+        "name": "AAA SC 1",
+        "address": "Avenida Siempreviva 742",
+        "city": "Springfield",
+        "state": "WA",
+        "zipCode": "12345",
+        "phone": "456-456-456",
+        "trade": "000000 Architectural",
+        "subcontratorStatus": "Prequalification Completed",
+        "subcontratorStatusId": 6,
+        "dateOfPrequal": null,
+        "tierRating": "1-Low Risk",
+        "singleProjectLimit": "$0.0000",
+        "aggregateProjectExposure": "$0.0000",
+        "profitability": "Negative greater than 5% of Net Worth",
+        "companyType": "Other",
+        "linkVisitedDate": null,
+        "contactFullName": null,
+        "mainEmail": null,
+        "hiringClientsList": [
+            {
+                "hiringClientId": 1,
+                "name": "Base Hiring Client"
+            }
+        ],
+        "registrationUrl": "/register/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJoaXJpbmdDbGllbnRJZCI6IjEiLCJzdWJjb250cmFjdG9ySWQiOiIxIiwiaWF0IjoxNTMwOTA1NTUwfQ.Xu5ixhS8slzN6hMIQA5bkFBp_sJ0GoYXfNc2X6CRoNk"
+    }
+}
+
+Note: If link was already  visited, then "registrationUrl" is null.
+
+Sample response ERROR:
+
+  {
+    "success": false,
+    "data": {
+      "errorCode":99999,
+      "description":"Some description related with the problem",
+      "error": {} //will have extra info when error is not categorized
+    }
+  }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+
+### GET Subcontractors status
+
+Resource URL: /subcontractors/status
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Query Parameters:
+
+* No parameters
+
+Sample response OK:
+
+{
+    "success": true,
+    "subcontratorStatus": [
+        {
+            "Id": 1,
+            "Status": "None",
+            "Description": null
+        },
+        {
+            "Id": 2,
+            "Status": "Pending Invitation",
+            "Description": "Hiring Client has requested that PrequalUSA prequalify this subcontractor."
+        },
+        {
+            "Id": 3,
+            "Status": "Invited",
+            "Description": "PrequalUSA has sent at least one invitation to the Subcontractor for them to register and be associated with this hiring client."
+        },
+        {
+            "Id": 4,
+            "Status": "Pending Submission",
+            "Description": "The Subcontractor has registered for the PrequalUSA system and is associated with the Hiring Client but they have not submitted their prequalification data."
+        },
+        {
+            "Id": 5,
+            "Status": "Pending Review",
+            "Description": "The Subcontractor has submitted their prequalification data and a PrequalUSA Financial Analyst needs to review the Subcontractors data."
+        },
+        {
+            "Id": 6,
+            "Status": "Prequalified",
+            "Description": "The PrequalUSA analyst has saved their analysis of this Subcontractor."
+        },
+        {
+            "Id": 7,
+            "Status": "Pending Renewal",
+            "Description": "The Subcontractor must submit a new, updated prequalification form as the previous prequalification is older than a specified period of time."
+        },
+        {
+            "Id": 8,
+            "Status": "Inactive",
+            "Description": "The Subcontractor has been marked as Inactive as they have failed to register or submit prequalification data."
+        },
+        {
+            "Id": 9,
+            "Status": "Escalated (Invitation)",
+            "Description": "The Subcontractor has failed to accept the invitation to register and associate with the Hiring Client. The Hiring Client must determine the next steps for this Subcontractor."
+        },
+        {
+            "Id": 10,
+            "Status": "Escalated (Submission)",
+            "Description": "The Subcontractor has failed to submit their prequalification data. The Hiring Client must determine the next steps for this Subcontractor."
+        },
+        {
+            "Id": 11,
+            "Status": "Expired",
+            "Description": "The Subcontractor has not submitted updated prequalification data and the previously submitted prequalification data is older than an acceptable period."
+        }
+    ]
+}
+
+Sample response ERROR:
+
+  {
+    "success": false,
+    "data": {
+      "errorCode":99999,
+      "description":"Some description related with the problem",
+      "error": {} //will have extra info when error is not categorized
+    }
+  }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+
+### GET Subcontractors tie rates
+
+Resource URL: /subcontractors/tierates
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Query Parameters:
+
+* No parameters are required
+
+Sample response OK:
+
+{
+    "success": true,
+    "subcontratorTieRates": [
+        {
+            "Id": 1,
+            "Name": "Low Risk"
+        },
+        {
+            "Id": 2,
+            "Name": "Moderate Risk"
+        },
+        {
+            "Id": 3,
+            "Name": "High Risk"
+        },
+        {
+            "Id": 4,
+            "Name": "No Eligible"
+        }
+    ]
+}
+
+Sample response ERROR:
+
+  {
+    "success": false,
+    "data": {
+      "errorCode":99999,
+      "description":"Some description related with the problem",
+      "error": {} //will have extra info when error is not categorized
+    }
+  }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+
+
+
+### GET Subcontractors
+
+Resource URL: /subcontractors
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Query Parameters:
+
+* id (Optional)
+* userId (Optional)
+* fields (Optional, id | name | address | city | state | zipCode | mainEmail | taxID | status)
+* searchTerm (optional. Use to do a keyword search on Name and Tax Id)
+* searchByHCId
+* searchByStatusId
+* searchByTradeId
+* searchByTieRatingId
+* searchByStateId
+* searchByMaxSingleLimit
+* searchByMaxAggregateLimit
+* orderBy (optional - valid values: 'Id', 'Name', 'TaxId', 'Status')
+* orderDirection (optional - valid values: 'ASC' or 'DESC')
+
+* NOTE that fields is case sensitive right now. 
+
+Sample response OK:
+
+{
+    "success": true,
+    "data": {
+        "userId": "2201",
+        "totalCount": 5,
+        "subContractors": [
+            {
+                "id": [
+                    1437,
+                    1437
+                ],
+                "name": "Sina",
+                "address": "1",
+                "city": "1",
+                "state": "NY",
+                "zipCode": "11111",
+                "mainEmail": "",
+                "taxId": "00-000000",
+                "status": "Pending Invitation",
+                "trade": {
+                    "value": "623",
+                    "description": "000000 Architectural"
+                },
+                "secondaryTrade": {
+                    "value": "None",
+                    "description": "None"
+                },
+                "tertiaryTrade": {
+                    "value": "None",
+                    "description": "None"
+                },
+                "tier": {
+                    "id": "1",
+                    "description": "LOW RISK",
+                    "color": "green"
+                }
+            }
+        ]
+    }
+}
+
+Sample response ERROR:
+
+  {
+    "success": false,
+    "data": {
+      "errorCode":99999,
+      "description":"Some description related with the problem",
+      "error": {} //will have extra info when error is not categorized
+    }
+  }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+* 10020 = No Sub Contractors found
+
+
+### POST Add subcontractor
+
+Resource URL: /subcontractors
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Body Parameters:
+
+* userId (Optional)
+* name,
+* tradeId An ID from the Trades list,
+* secondaryTradeId (Optional) An ID from the Trades list,
+* tertiaryTradeId (Optional) An ID from the Trades list,
+* quaternaryTradeId (Optional) An ID from the Trades list,
+* quinaryTradeId (Optional) An ID from the Trades list,
+* address (Optional),
+* city,
+* state (Optional),
+* zipCode (Optional),
+* mainEmail,
+* taxId (Unique value, Key)
+
+* NOTE that fields is case sensitive right now. 
+
+Sample response OK:
+
+    {
+        "success": true
+    }
+
+
+Sample response ERROR:
+
+  {
+    "success": false,
+    "data": {
+      "errorCode":99999,
+      "description":"Some description related with the problem",
+      "error": {} //will have extra info when error is not categorized
+    }
+  }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+* 10020 = No Sub Contractors found
+* 10021 = This tax id is already in use
+
+
+
+### PUT subContractor_user relations
+
+Resource URL: /subcontractors/userrelation
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+* Content-Type = "application/json"
+
+Replaces the current subContractor_user relations for the ones specified in the body.
+
+Sample request body:
+
+    {
+        "userId": 2,
+        "subContractorIds": [19, 20, 36]
+    }
+
+Sample response OK:
+
+{
+    "success": true,
+    "relationsUpdated": true
+}
+
+Sample response ERROR:
+
+{
+    "success": false,
+    "data": {
+        "errorCode": 10003,
+        "description": "Invalid data.",
+        "error": {}
+    }
+}
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+### POST Subcontractors list in csv file format and validate, 
+    always returns a response, and detailed with errors in case any value didn't pass validation
+Resource URL: /subcontractors/upload_validate
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Query Parameters:
+
+* hiringClientId 
+* csvSCDataFile (Type file, CSV) with the following format:
+
+    CompanyName,ContactName,Email,Phone,TaxId
+    "SC1","Michael Tester","luis.paradela@accelone.com","465-456-456","46-4233787"
+    "SC 12 Test subcontractor","Peter Tester","luis@accelone.com","456-456-456","45-6654"
+
+    Important!!!!: Header is required and case sensitive
+
+Sample response OK:
+
+{
+    "success": true,
+    "data": [
+        {
+            "companyName": "SC1",
+            "companyNameError": "Exists",
+            "contactName": "Michael Tester",
+            "contactNameError": "",
+            "mail": "luis.paradela@accelone.com",
+            "mailError": "",
+            "phone": "465456456",
+            "phoneError": "",
+            "taxId": "464233787",
+            "taxIdError": "Exists"
+        },
+        {
+            "companyName": "SC 12 Test subcontractor",
+            "companyNameError": "",
+            "contactName": "Peter Tester",
+            "contactNameError": "",
+            "mail": "luis@accelone.com",
+            "mailError": "",
+            "phone": "456456456",
+            "phoneError": "Exists",
+            "taxId": "456654",
+            "taxIdError": ""
+        }
+    ]
+}
+
+Sample response ERROR:
+
+  {
+    "success": false,
+    "data": {
+      "errorCode":99999,
+      "description":"Some description related with the problem",
+      "error": {} //will have extra info when error is not categorized
+    }
+  }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+* 10028 = No file was uploaded
+
+### POST Subcontractors list in JSON format and validate, if list is fine 
+    it saves to DB and send emails, else returns a response with errors
+
+Resource URL: /subcontractors/list_validate_save
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Query Parameters:
+
+* hiringClientId 
+* subcontractorsList:
+    Sample valida value (a string with a list in JSON format)
+
+    [{"companyName":"SC 20","contactName":"Michael Tester","mail":"luis.paradela@accelone.com","phone":"465-456-456","taxId":"42-456456"},{"companyName":"SC 12 Test subcontractor","contactName":"Peter Tester","mail":"luis@accelone.com","phone":"465-456-457","phoneError":"","taxId":"42-456456"}]
+
+
+Sample response OK with no errors in the provided data:
+
+{
+    "success": true,
+    "data": ""
+}
+
+Sample response OK with errors in the provided data:
+{
+    "success": false,
+    "data": [
+        {
+            "companyName": "SC1",
+            "companyNameError": "_Exists",
+            "contactName": "Michael Tester",
+            "contactNameError": "",
+            "mail": "",
+            "mailError": "",
+            "phone": "465456456",
+            "phoneError": "",
+            "taxId": "42456456",
+            "taxIdError": ""
+        },
+        {
+            "companyName": "SC 12 Test subcontractor",
+            "companyNameError": "",
+            "contactName": "Peter Tester",
+            "contactNameError": "",
+            "mail": "",
+            "mailError": "",
+            "phone": "465456457",
+            "phoneError": "",
+            "taxId": "42456456",
+            "taxIdError": ""
+        }
+    ]
+}
+
+Sample response ERROR:
+
+  {
+    "success": false,
+    "data": {
+      "errorCode":99999,
+      "description":"Some description related with the problem",
+      "error": {} //will have extra info when error is not categorized
+    }
+  }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+### POST Send submission to a subcontractor
+
+Resource URL: /subcontractors/sendsubmission
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Body Parameters:
+
+* hiringClientId
+* subcontractorId
+* formId
+
+* NOTE that fields is case sensitive right now. 
+
+Sample response OK:
+
+    {
+        "success": true,
+        "savedFormId": 23
+    }
+
+Sample response ERROR:
+
+  {
+    "success": false,
+    "data": {
+      "errorCode":99999,
+      "description":"Some description related with the problem",
+      "error": {} //will have extra info when error is not categorized
+    }
+  }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+* 10020 = No Sub Contractors found
+
+### GET A subcontractor submission by provided hash
+
+Resource URL: /subcontractors/submission
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Query Parameters:
+
+* submissionCode
+
+* NOTE that fields is case sensitive right now. 
+
+Value of hash to test:
+submissionCode (http://104.236.90.5:5000/form-link/) : 
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJtaXNzaW9uQ29kZSI6ImV5SmhiR2NpT2lKSVV6STFOaUlzSW5SNWNDSTZJa3BYVkNKOS5leUp6ZFdKdGFYTnphVzl1UTI5a1pTSTZJaUlzSW1ocGNtbHVaME5zYVdWdWRFbGtJam94TENKemRXSmpiMjUwY21GamRHOXlTV1FpT2pFeE5qZ3NJbVp2Y20xSlpDSTZOeklzSW5WelpYSkpaQ0k2TWl3aWMyRjJaV1JHYjNKdFNXUWlPakkwTENKMGFXMXpVM1JoYlhBaU9pSXlNREU0TFRBekxURXlWREUxT2pNNE9qSTFMalU1TTFvaUxDSnBZWFFpT2pFMU1qQTROekl3TWpKOS5jVFlFdVRpd3lpd0prZ283a3NUdVRqMmQ3T3luc1dOSjJ0WXVkQTNCVzJVIiwiaGlyaW5nQ2xpZW50SWQiOjEsInN1YmNvbnRyYWN0b3JJZCI6MiwiZm9ybUlkIjo3MiwidXNlcklkIjoyLCJzYXZlZEZvcm1JZCI6MjcsInRpbXNTdGFtcCI6IjIwMTgtMDMtMTJUMTU6Mzg6MjUuNTkzWiIsImlhdCI6MTUyNTExNDI3M30.Frw97kawYCpISLKqMKG09ozCX1LUuXy3lUSuFc64EG4
+
+Encoded values:
+    params.hiringClientId = 1;
+    params.subcontractorId = 1168;
+    params.formId = 72;
+    params.userId = 2;
+    params.savedFormId = 27;
+    params.timsStamp = '2018-03-12T15:38:25.593Z';
+
+
+
+Sample response OK:
+
+    {
+        "success": true,
+        "savedFormId": 27,
+        "subcontractorId" : 1
+    }
+
+Sample response ERROR:
+
+  {
+    "success": false,
+    "data": {
+      "errorCode":99999,
+      "description":"Some description related with the problem",
+      "error": {} //will have extra info when error is not categorized
+    }
+  }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+* 10020 = No Sub Contractors found
+
+
+### GET The hiringclients associated with a subcontractor
+
+Resource URL: /subcontractors/hiringclients
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Query Parameters:
+
+* subcontractorId
+
+* NOTE that fields is case sensitive right now. 
+
+Sample response OK:
+
+{
+    "success": true,
+    "hiringClients": [
+        {
+            "hiringClientId": 17,
+            "name": "mmhctest10"
+        }
+    ]
+}
+
+Sample response ERROR:
+
+  {
+    "success": false,
+    "data": {
+      "errorCode":99999,
+      "description":"Some description related with the problem",
+      "error": {} //will have extra info when error is not categorized
+    }
+  }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+
+
+### GET The subcontractor data to poppulate the registration  form
+
+Resource URL: /subcontractors/innvitevalues
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Query Parameters:
+
+* inviteCode
+
+* NOTE that fields is case sensitive right now. 
+
+Sample response OK:
+
+{
+    "success": true,
+    "data": {
+        "subContractor": {
+            "id": 1,
+            "name": "AAA SC 1",
+            "fullName": "Peter Tester",
+            "phone": "456-456-456",
+            "email": "homero@accelone.com"
+        },
+        "hiringClientId": 1,
+        "trades": [
+            {
+                "id": 10,
+                "value": "355",
+                "Description": "006000 Project Forms"
+            },
+            {
+                "id": 2,
+                "value": "625",
+                "Description": "Other"
+            },
+        ],
+        "titles": [
+            {
+                "id": 0,
+                "title": "None"
+            },
+            {
+                "id": 1,
+                "title": " OFFICE MANAGER"
+            },
+            {
+                "id": 2,
+                "title": " PRESIDENT"
+            },
+            {
+                "id": 3,
+                "title": "A/P  HR  PAYROLL"
+            },
+        ],
+        "countries": [
+            {
+                "id": 1,
+                "name": "United States"
+            },
+            {
+                "id": 2,
+                "name": "Afghanistan"
+            },
+            {
+                "id": 3,
+                "name": "Albania"
+            },
+            {
+                "id": 4,
+                "name": "Algeria"
+            },
+        ],
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjMwMTkzODYsImV4cCI6MTUzMzAxOTM4NX0.Aee4zvkZTvsAZPajnLTQFGpdnZ7fddPp6u3tZwF9Ayk",
+        "logo": "/9j/ZZMTt4AJp/7T//Z"
+    }
+}
+Sample response ERROR:
+
+  {
+    "success": false,
+    "data": {
+      "errorCode":99999,
+      "description":"Some description related with the problem",
+      "error": {} //will have extra info when error is not categorized
+    }
+  }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+### PUT Update basic parameters
+
+Resource URL: /subcontractors/updatebasicdata
+
+Headers:
+
+* x-access-token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjI3NzgwNjksImV4cCI6MTUzMjc3ODA2OH0.FYY6jAv3j9uzGNPkbEMruLHkzZKI3bErtYSaqKB9SDw"
+
+Body Parameters:
+
+{
+    "subcontractorId":"1",
+    "contactEmail":"luis@accelone.com",
+    "contactPhone","456-456-456",
+    "contactFullName","Jose Tester"
+}
+
+* NOTE that fields is case sensitive right now. 
+
+Sample response OK:
+    {
+        "success": true
+    }
+
+Sample response ERROR:
+
+  {
+    "success": false,
+    "data": {
+      "errorCode":99999,
+      "description":"Some description related with the problem",
+      "error": {} //will have extra info when error is not categorized
+    }
+  }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+

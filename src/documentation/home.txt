@@ -1,0 +1,60 @@
+## Resources
+
+* General data
+* API Reference
+
+
+***
+## General data:
+
+### Important Documents 
+
+* Team Docs: https://drive.google.com/drive/u/1/folders/1yyTjWa1Y0sI4XMwwu8YAsngUlZBSuEJM
+
+### Dev & Test server root URL:
+
+http://104.236.90.5:8888/api
+
+### Setup & Deployment
+
+* [Setup](https://github.com/AccelOne/certfocus_backend/wiki/Setup)
+* [Deployment](https://github.com/AccelOne/certfocus_backend/wiki/Deployment)
+
+## API Reference
+
+
+### Error codes and messages
+
+* 10000 = 'Backend error.'
+* 10001 = 'MSSQL error.'
+* 10002 = 'MongoDB error.'
+* 10003 = 'Invalid data.'
+* 10004 = 'This email is already in use.'
+* 10005 = 'No token provided.'
+* 10006 = 'Failed to authenticate token.'
+* 10007 = 'The token is expired.'
+* 10008 = 'User not found.'
+* 10009 = 'Invalid Password.'
+* 10010 = 'Login error.'
+* 10011 = 'The user is disabled.'
+* 10012 = 'Invalid password format.'
+* 10013 = 'Invalid email format.'
+* 10014 = 'Invalid role.'
+* 10015 = 'The user is not allowed to do that.'
+* 10016 = 'Invalid user title.'
+* 10017 = 'Invalid time zone.'
+
+
+
+Endpoints:
+
+* [Admins](https://github.com/AccelOne/certfocus_backend/wiki/Admins)
+* [Users](https://github.com/AccelOne/certfocus_backend/wiki/Users)
+* [Roles](https://github.com/AccelOne/certfocus_backend/wiki/Roles)
+* [Titles](https://github.com/AccelOne/certfocus_backend/wiki/Titles)
+* [TimeZones](https://github.com/AccelOne/certfocus_backend/wiki/TimeZones)
+* [Trades](https://github.com/AccelOne/certfocus_backend/wiki/Trades)
+* [Resources](https://github.com/AccelOne/certfocus_backend/wiki/Resources)
+* [Functions](https://github.com/AccelOne/certfocus_backend/wiki/Functions)
+* [FormFieldsTypes](https://github.com/AccelOne/certfocus_backend/wiki/FormFieldsTypes)
+

@@ -1,0 +1,1409 @@
+### GET forms fields lookups
+
+Resource URL: /forms/fieldslists
+
+Headers:
+
+* x-access-token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjMzNzA0MjAsImV4cCI6MTUzMzM3MDQxOX0.O7YygxqCUBt8_86QiUjFyr2Dl2BozNInYEmTdNK4FTI"
+
+Query Parameters:
+
+    No parameters are required
+
+Example response OK:
+
+{
+    "success": true,
+    "data": {
+        "formFieldsLists": [
+            {
+                "id": 3,
+                "name": "Company Types",
+                "query": "select id, name from CompaniesTypes order by name"
+            },
+            {
+                "id": 4,
+                "name": "FCL Trade List",
+                "query": "select Id, Description AS name from Trades where HiringClientID = 66 order by Description;"
+            },
+            {
+                "id": 6,
+                "name": "Financial Statement Types",
+                "query": "SELECT Id, name FROM zFinancialStatementTypes"
+            },
+            {
+                "id": 1,
+                "name": "References Types",
+                "query": "select id, type as name from ReferencesTypes"
+            },
+            {
+                "id": 5,
+                "name": "Safety Meeting Frequency",
+                "query": "SELECT Id, Name as name FROM zSafetyMeetingFrequency"
+            },
+            {
+                "id": 2,
+                "name": "States",
+                "query": "select id, name from States order by name"
+            }
+        ],
+        "scorecardsSourcesList": [
+            {
+                "id": 6,
+                "name": "Audit"
+            },
+            {
+                "id": 5,
+                "name": "Compilation"
+            },
+            {
+                "id": 4,
+                "name": "Internal"
+            },
+            {
+                "id": 1,
+                "name": "None"
+            },
+            {
+                "id": 2,
+                "name": "Review"
+            },
+            {
+                "id": 3,
+                "name": "Tax Return"
+            }
+        ],
+        "companiesTypesList": [
+            {
+                "id": 3,
+                "name": "C-Corp"
+            },
+            {
+                "id": 1,
+                "name": "None"
+            },
+            {
+                "id": 2,
+                "name": "S-Corp / LLC"
+            }
+        ],
+        "turnOverRatesList": [
+            {
+                "id": 3,
+                "name": "12 Months Ended"
+            },
+            {
+                "id": 1,
+                "name": "6 Months Ended"
+            },
+            {
+                "id": 2,
+                "name": "9 Months Ended"
+            }
+        ]
+    }
+}
+
+Example response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+### GET forms fields lookups
+
+Resource URL: /forms/savedformfieldsvalues
+
+Headers:
+
+* x-access-token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjMzNzA0MjAsImV4cCI6MTUzMzM3MDQxOX0.O7YygxqCUBt8_86QiUjFyr2Dl2BozNInYEmTdNK4FTI"
+
+Query Parameters:
+
+    No parameters are required
+
+Example response OK:
+
+{
+    "success": true,
+    "data": [
+        {
+            "id": 1,
+            "name": "References Types",
+            "query": "select id, name from ReferencesTypes"
+        }
+    ]
+}
+
+Example response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+### POST saved form
+
+Resource URL: /forms/savedforms
+
+Headers:
+
+* x-access-token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjMzNzA0MjAsImV4cCI6MTUzMzM3MDQxOX0.O7YygxqCUBt8_86QiUjFyr2Dl2BozNInYEmTdNK4FTI"
+
+Sample request body:
+
+    {
+        "formId": 72,
+        "userId": 2,
+        "subContractorId": 16,
+        "hiringClientId": 5
+    }
+
+Example response OK:
+
+    {
+        "success": true,
+        "savedFormId: 2
+    }
+
+Example response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10004 = This email is already in use
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+### GET forms
+
+Resource URL: /forms
+
+Headers:
+
+* x-access-token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjMzNzA0MjAsImV4cCI6MTUzMzM3MDQxOX0.O7YygxqCUBt8_86QiUjFyr2Dl2BozNInYEmTdNK4FTI"
+
+Query Parameters:
+
+* formId (optional)
+* formCreatorId (optional. Filters forms by creator id)
+* userId (optional. filters forms by userId)
+* orderBy (optional), Possible values for orderBy (Prefix: F:Form, FS:Form section, FSF: Form section field and U:User)
+                    are the following:
+                        "name"
+                        "dateCreated"
+                        "creatorFullName"
+* orderDirection (optional), valid values: "ASC", "DESC"                        
+* pageSize (optional. Use with pageNumber to limit the amount of results)
+* pageNumber (optional. Use with pageSize to paginate the results )
+* justFormData (optional), valid values: "true", "false" (if added only the form data is sent without sections and fields)
+
+* searchTerm (optional. Use to do a keyword search on formCreator and form name)
+* searchByCreator (optional. Use to search by Form Creator user id)
+* searchBySentTo (optional. Use to search by Sent to Subcontractor id)
+* hiringClientId
+
+Example response OK:
+
+{
+    "success": true,
+    "data": {
+        "totalCount": 1,
+        "forms": [
+            {
+                "id": 72,
+                "name": "A Test Form to PDF",
+                "description": "This is the form used to test the pagination, sections, preview, and pdf rendering. Use it wisely!",
+                "creator": "Pablo Tester",
+                "dateCreated": "2018-02-16T18:27:49.707Z",
+                "isComplete": 0,
+                "formSections": [
+                    {
+                        "id": 56,
+                        "internalName": "Frm72_Sec0",
+                        "title": "Section 1",
+                        "positionIndex": 0,
+                        "fields": [
+                            {
+                                "Id": 197,
+                                "internalName": "first_name",
+                                "referenceId": null,
+                                "caption": "First Name:",
+                                "controlGroup": null,
+                                "isConditional": 0,
+                                "triggerFieldName": null,
+                                "urlTitle": null,
+                                "urlTarget": null,
+                                "type": "Text",
+                                "columnPos": 0,
+                                "rowPos": 13,
+                                "fieldLength": 34,
+                                "valueLength": 0,
+                                "minValue": null,
+                                "maxValue": null,
+                                "isMandatory": "true",
+                                "hasBorder": 0,
+                                "rowsCount": 3,
+                                "defaultValue": "first name"
+                            },
+                            {
+                                "Id": 198,
+                                "internalName": "optionRed",
+                                "referenceId": null,
+                                "caption": "Red",
+                                "controlGroup": null,
+                                "isConditional": null,
+                                "triggerFieldName": null,
+                                "urlTitle": null,
+                                "urlTarget": null,
+                                "type": "CheckBox",
+                                "columnPos": 0,
+                                "rowPos": 25,
+                                "fieldLength": 16,
+                                "valueLength": 0,
+                                "minValue": null,
+                                "maxValue": null,
+                                "isMandatory": "true",
+                                "hasBorder": 0,
+                                "rowsCount": 3,
+                                "defaultValue": "Red"
+                            },
+                            {
+                                "Id": 201,
+                                "internalName": "feedback_box",
+                                "referenceId": null,
+                                "caption": "Feedback:",
+                                "controlGroup": null,
+                                "isConditional": 0,
+                                "triggerFieldName": null,
+                                "urlTitle": null,
+                                "urlTarget": null,
+                                "type": "Paragraph",
+                                "columnPos": 0,
+                                "rowPos": 31,
+                                "fieldLength": 72,
+                                "valueLength": 0,
+                                "minValue": null,
+                                "maxValue": null,
+                                "isMandatory": "true",
+                                "hasBorder": 0,
+                                "rowsCount": 16,
+                                "defaultValue": "give us your feedback..."
+                            },
+                            {
+                                "Id": 1303,
+                                "internalName": "DropDown",
+                                "referenceId": 2,
+                                "caption": "Drop down options to select from a list of reference types:",
+                                "controlGroup": null,
+                                "isConditional": 0,
+                                "triggerFieldName": null,
+                                "urlTitle": null,
+                                "urlTarget": null,
+                                "possiblValues": [
+                                    {
+                                        "id": 1,
+                                        "name": "Alabama"
+                                    },
+                                    {
+                                        "id": 2,
+                                        "name": "Alaska"
+                                    }
+                                ],
+                                "type": "DropDown",
+                                "columnPos": 0,
+                                "rowPos": 65,
+                                "fieldLength": 34,
+                                "valueLength": 0,
+                                "minValue": null,
+                                "maxValue": null,
+                                "isMandatory": "true",
+                                "hasBorder": 0,
+                                "rowsCount": 3,
+                                "defaultValue": "-- Select Reference --"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
+
+Example response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+* 10018 = Form not found
+
+
+
+### POST saved form
+
+Resource URL: /forms/savedforms
+
+Headers:
+
+* x-access-token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjMzNzA0MjAsImV4cCI6MTUzMzM3MDQxOX0.O7YygxqCUBt8_86QiUjFyr2Dl2BozNInYEmTdNK4FTI"
+
+Sample request body:
+
+    {
+        "formId": 72,
+        "userId": 2,
+        "subContractorId": 16,
+        "hiringClientId": 5
+    }
+
+Example response OK:
+
+    {
+        "success": true,
+        "savedFormId: 2
+    }
+
+Example response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10004 = This email is already in use
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+### GET saved forms filters
+
+Resource URL: /forms/savedformsfilter
+
+Headers:
+
+* x-access-token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjMzNzA0MjAsImV4cCI6MTUzMzM3MDQxOX0.O7YygxqCUBt8_86QiUjFyr2Dl2BozNInYEmTdNK4FTI"
+
+Query Parameters:
+
+{
+    "success": true,
+    "data": {
+        "creators": [
+            {
+                "creatorUserId": 3,
+                "creatorUserName": "Luis Tester2"
+            },
+            {
+                "creatorUserId": 2,
+                "creatorUserName": "Pablo Tester"
+            }
+        ],
+        "subcontractors": [
+            {
+                "subContractorId": 1,
+                "subContractorName": "AAA Test SC"
+            },
+            {
+                "subContractorId": 2,
+                "subContractorName": "SC2"
+            }
+        ]
+    }
+}
+
+Example response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10004 = This email is already in use
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+### GET saved forms
+
+Resource URL: /forms/savedforms
+
+Headers:
+
+* x-access-token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjMzNzA0MjAsImV4cCI6MTUzMzM3MDQxOX0.O7YygxqCUBt8_86QiUjFyr2Dl2BozNInYEmTdNK4FTI"
+
+Query Parameters:
+
+* subcontractorId (optional)
+* hiringClientId (optional)
+* savedFormId (optional. Get a specific saved form)
+* formId (optional. Get a all the saved forms related to a form)
+* creatorUserId (optional. Get all saved forms for a specific form creator user)
+* pageNumber (optional)
+* pageSize (optional)
+* searchTerm (optional. Use to do a keyword search on form name)
+* orderBy (optional - valid values: 
+            'formName',
+            'submitterUserName',
+            'subcontractorName',
+            'hiringClientName',
+            'status' or
+            'submissionDate')
+* orderDirection (optional - valid values: 'ASC' or 'DESC')
+
+Example response OK:
+
+{
+    "success": true,
+    "data": {
+        "totalCount": 2,
+        "savedForms": [
+            {
+                "id": 1,
+                "formId": 1,
+                "formName": "firstForm",
+                "submitterUserId": 3,
+                "submitterUserName": "Luis Tester2",
+                "subcontractorID": 1,
+                "subcontractorName": "AAA Test SC",
+                "hiringClientId": 1,
+                "hiringClientName": "HC1",
+                "status": "Complete",
+                "submissionDate": "2017-12-12T14:09:03.680Z"
+            },
+            {
+                "id": 27,
+                "formId": 72,
+                "formName": "A Test Form to PDF",
+                "submitterUserId": 2,
+                "submitterUserName": "Pablo Tester",
+                "subcontractorID": 2,
+                "subcontractorName": "SC2",
+                "hiringClientId": 1,
+                "hiringClientName": "HC1",
+                "status": "Incomplete",
+                "submissionDate": "2018-03-13T12:13:30.600Z"
+            }
+        ]
+    }
+}
+
+Example response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10004 = This email is already in use
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+### PUT saved form
+
+Resource URL: /forms/savedforms
+
+Headers:
+
+* x-access-token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjMzNzA0MjAsImV4cCI6MTUzMzM3MDQxOX0.O7YygxqCUBt8_86QiUjFyr2Dl2BozNInYEmTdNK4FTI"
+
+Sample request body:
+
+    {
+        "savedFormId": 1,
+        "isComplete": "true"
+    }
+
+Example response OK:
+
+    {
+        "success": true,
+        "data": {
+            "formUpdated": true
+        }
+    }
+
+Example response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10004 = This email is already in use
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+
+
+### GET saved section values
+
+Resource URL: /forms/savedformfieldsvalues
+
+Headers:
+
+* x-access-token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjMzNzA0MjAsImV4cCI6MTUzMzM3MDQxOX0.O7YygxqCUBt8_86QiUjFyr2Dl2BozNInYEmTdNK4FTI"
+
+Query Parameters:
+
+* savedFormId (required)
+
+Sample response:
+
+{
+    "success": true,
+    "data": {
+        "totalCount": 86,
+        "savedFormId": "27",
+        "savedValues": [
+            {
+                "formSectionFieldId": 197,
+                "savedValue": "One",
+                "fileLink": null
+            },
+            {
+                "formSectionFieldId": 198,
+                "savedValue": "false",
+                "fileLink": null
+            },
+            {
+                "formSectionFieldId": 1301,
+                "savedValue": "thumbnail.jpg",
+                "fileLink": "thumbnail_1_9349.jpg"
+            }
+        ]
+    }
+}
+
+Example response OK:
+
+    {
+      "success": true,
+        "data": {
+            "fieldsSaved": "true"
+        }
+    }
+
+Example response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10004 = This email is already in use
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+* 10018 = Form not found
+
+
+
+### PUT saved forms fields values
+
+Resource URL: /forms/savedformfieldsvalues
+
+Headers:
+
+* x-access-token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjMzNzA0MjAsImV4cCI6MTUzMzM3MDQxOX0.O7YygxqCUBt8_86QiUjFyr2Dl2BozNInYEmTdNK4FTI"
+
+* NOTE: savedValues array should contain all saved forms fields values, including: modified, unmodified and newly added ones. API will modify those that have changed and will insert those that are new.
+
+Sample request body:
+
+    {
+        "savedFormId": 1,
+        "savedValues" : [
+             {
+                "formSectionFieldId": 4,
+                "savedValue": "520 2nd Ave W"
+            },
+            {
+                "formSectionFieldId": 6,
+                "savedValue": "Gotham"
+            },
+            {
+                "formSectionFieldId": 22,
+                "savedValue": "Bruce Wayne"
+            },
+            {
+                "formSectionFieldId": 23,
+                "savedValue": "Mr"
+            },
+            {
+                "formSectionFieldId": 24,
+                "savedValue": "(227)-626-3275"
+            },
+            {
+                "formSectionFieldId": 10,
+                "savedValue": "1234567"
+            }
+        ]
+    }
+
+Example response OK:
+
+    {
+      "success": true,
+        "data": {
+            "fieldsSaved": "true"
+        }
+    }
+
+Example response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10004 = This email is already in use
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+
+### POST form
+
+Resource URL: /forms
+
+Headers:
+
+* x-access-token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjMzNzA0MjAsImV4cCI6MTUzMzM3MDQxOX0.O7YygxqCUBt8_86QiUjFyr2Dl2BozNInYEmTdNK4FTI"
+
+Sample request body:
+
+    {
+      "name": "Test form",
+      "description": "Test form description", (optional)
+      "userId": 2,
+      "creatorUserId" : 2,
+      "hiringClientId" : 1
+    }
+
+Sample response OK:
+
+{
+    "success": true,
+    "data": {
+        "formId": 50
+    }
+}
+
+Sample response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10004 = This email is already in use
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+### PUT form
+
+Resource URL: /forms
+
+Headers:
+
+* x-access-token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjMzNzA0MjAsImV4cCI6MTUzMzM3MDQxOX0.O7YygxqCUBt8_86QiUjFyr2Dl2BozNInYEmTdNK4FTI"
+
+Sample request body:
+
+    {
+      "id": "2",
+      "name": "Test form 2",
+      "description": "Test form description", (optional)
+      "userId": 2,
+      "creatorUserId" : 2,
+      "isComplete": 1,
+      "hiringClientId" : 1
+    }
+
+Sample response OK:
+
+{
+    "success": true,
+    "data": {
+        "formId": "2"
+    }
+}
+
+Sample response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10004 = This email is already in use
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+### DELETE form
+
+Resource URL: /forms
+
+Headers:
+
+* x-access-token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjMzNzA0MjAsImV4cCI6MTUzMzM3MDQxOX0.O7YygxqCUBt8_86QiUjFyr2Dl2BozNInYEmTdNK4FTI"
+
+Sample request body:
+
+    {
+      "id": "2"
+    }
+
+Sample response OK:
+
+{
+    "success": true,
+    "data": {
+        "formId": "2"
+    }
+}
+
+Sample response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10004 = This email is already in use
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+### POST form section
+
+Resource URL: /forms/formssections
+
+Notes: It saves one section at a time.
+
+Headers:
+
+* x-access-token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjMzNzA0MjAsImV4cCI6MTUzMzM3MDQxOX0.O7YygxqCUBt8_86QiUjFyr2Dl2BozNInYEmTdNK4FTI"
+
+Sample request body:
+
+    {
+      "formId": "2",
+      "sectionPositionIndex": 0
+    }
+
+Or adding optional internalName:
+
+    {
+      "formId": "2",
+      "sectionTitle": "Section Title",
+      "sectionPositionIndex": 0
+      "sectionInternalName": "Frm1_Sec2" (optional)
+    }
+
+    {
+        "success": true,
+        "data": {
+            "sectionId": 42
+        }
+    }
+
+Sample response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10004 = This email is already in use
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+### PUT form section
+
+Resource URL: /forms/formssections
+
+Notes: It saves one section at a time.
+
+Headers:
+
+* x-access-token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjMzNzA0MjAsImV4cCI6MTUzMzM3MDQxOX0.O7YygxqCUBt8_86QiUjFyr2Dl2BozNInYEmTdNK4FTI"
+
+Sample request body:
+
+    {
+      "id": "2",
+      "formId": "2",
+      "sectionTitle": "Section Title",
+      "sectionPositionIndex": 0
+    }
+
+Or adding optional internalName:
+
+    {
+      "id": "2",
+      "formId": "2",
+      "sectionTitle": "Section Title",
+      "sectionPositionIndex": 0
+      "sectionInternalName": "Frm1_Sec2" (optional)
+    }
+
+Sample response OK:
+    {
+        "success": true,
+        "data": {
+            "sectionId": 42
+        }
+    }
+
+Sample response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10004 = This email is already in use
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+### DELETE form section
+
+Resource URL: /forms/formssections
+
+Notes: It saves one section at a time.
+
+Headers:
+
+* x-access-token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjMzNzA0MjAsImV4cCI6MTUzMzM3MDQxOX0.O7YygxqCUBt8_86QiUjFyr2Dl2BozNInYEmTdNK4FTI"
+
+Sample request body:
+
+    {
+      "id": "2"
+    }
+
+
+Sample response OK:
+    {
+        "success": true,
+        "data": {
+            "sectionId": 42
+        }
+    }
+
+Sample response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10004 = This email is already in use
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+### POST forms sections fields
+
+Resource URL: /forms/formssectionsfields
+
+Headers:
+
+* x-access-token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjMzNzA0MjAsImV4cCI6MTUzMzM3MDQxOX0.O7YygxqCUBt8_86QiUjFyr2Dl2BozNInYEmTdNK4FTI"
+
+Sample request body:
+
+    {
+      "formSectionId" : 3,
+      "internalName": "contact Name Label",
+      "typeId": 1,
+      "DefaultValue": "Contact Name",
+      "columnPos": 0,
+      "rowPos": 0,
+      "FieldLength" : 60,
+      "valueLength": 50,
+      "isMandatory": false,
+      "referenceId": 1,
+      "caption": "Test",
+      "controlGroup": null, (optional
+      "isConditional": null, (optional
+      "triggerFieldName": null, (optional)
+      "urlTitle": null, (optional)
+      "urlTarget": null (optional)
+    }
+
+Sample response OK:
+    {
+        "success": true,
+        "data": {
+            "fieldId": 42
+        }
+    }
+
+Sample response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10004 = This email is already in use
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+### PUT forms sections fields
+
+Resource URL: /forms/formssectionsfields
+
+Headers:
+
+* x-access-token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjMzNzA0MjAsImV4cCI6MTUzMzM3MDQxOX0.O7YygxqCUBt8_86QiUjFyr2Dl2BozNInYEmTdNK4FTI"
+
+Sample request body:
+
+    {
+      "id" : 40,
+      "formSectionId" : 40,
+      "internalName": "Contact Name Label",
+      "typeId": 1,
+      "DefaultValue": "Contact Name",
+      "columnPos": 0,
+      "rowPos": 0,
+      "FieldLength" : 60,
+      "valueLength": 50,
+      "isMandatory": false,
+      "referenceId": 1,
+      "caption": "Test",
+      "controlGroup": null, (optional
+      "isConditional": null, (optional
+      "triggerFieldName": null, (optional)
+      "urlTitle": null, (optional)
+      "urlTarget": null (optional)
+    }
+
+Sample response OK:
+    {
+        "success": true,
+        "data": {
+            "fieldId": 42
+        }
+    }
+
+Sample response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10004 = This email is already in use
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+### DELETE forms sections fields
+
+Resource URL: /forms/formssectionsfields
+
+Headers:
+
+* x-access-token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjMzNzA0MjAsImV4cCI6MTUzMzM3MDQxOX0.O7YygxqCUBt8_86QiUjFyr2Dl2BozNInYEmTdNK4FTI"
+
+Sample request body:
+
+    {
+      "id" : 40
+    }
+
+Sample response OK:
+    {
+        "success": true,
+        "data": {
+            "fieldId": 42
+        }
+    }
+
+Sample response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10004 = This email is already in use
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+
+### GET forms creator users
+
+Resource URL: /forms/users
+
+Headers:
+
+* x-access-token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjMzNzA0MjAsImV4cCI6MTUzMzM3MDQxOX0.O7YygxqCUBt8_86QiUjFyr2Dl2BozNInYEmTdNK4FTI"
+
+Query Parameters:
+* No parameters
+
+Example response OK:
+
+{
+    "success": true,
+    "data": {
+        "formCreatorUsers": [
+            {
+                "CreatorUserId": 3,
+                "FormCreator": "Luis Tester2",
+                "RoleName": "PQ Admin"
+            },
+            {
+                "CreatorUserId": 2,
+                "FormCreator": "Pablo Tester",
+                "RoleName": "PQ Admin"
+            }
+        ]
+    }
+}
+
+Sample response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10004 = This email is already in use
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+
+
+
+### GET all SC to which forms where sent
+
+Resource URL: /forms/scsentto
+
+Headers:
+
+* x-access-token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjMzNzA0MjAsImV4cCI6MTUzMzM3MDQxOX0.O7YygxqCUBt8_86QiUjFyr2Dl2BozNInYEmTdNK4FTI"
+
+Query Parameters:
+* No parameters
+
+Example response OK:
+
+{
+    "success": true,
+    "data": {
+        "formSCSentTo": [
+            {
+                "Id": 1168,
+                "Name": "SC 100"
+            },
+            {
+                "Id": 1169,
+                "Name": "SC 12 Test subcontractor"
+            },
+            {
+                "Id": 1171,
+                "Name": "SC 12 Test subcontractor"
+            },
+            {
+                "Id": 1,
+                "Name": "SC1"
+            },
+            {
+                "Id": 2,
+                "Name": "SC2"
+            }
+        ]
+    }
+}
+Sample response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10004 = This email is already in use
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+### GET saved forms submissions dates
+
+Resource URL: /forms/savedforms/datessubmission
+
+Headers:
+
+* x-access-token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjMzNzA0MjAsImV4cCI6MTUzMzM3MDQxOX0.O7YygxqCUBt8_86QiUjFyr2Dl2BozNInYEmTdNK4FTI"
+
+Query Parameters:
+
+* subcontractorId
+* hiringClientId)
+
+Example response OK:
+
+{
+    "success": true,
+    "data": [
+        {
+            "id": 1,
+            "dateOfSubmission": "2017-12-12T14:09:03.680Z"
+        }
+    ]
+}
+
+Example response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10004 = This email is already in use
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired

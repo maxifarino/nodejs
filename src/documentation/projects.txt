@@ -1,0 +1,298 @@
+### GET Projects with filters and sorting
+
+Resource URL: /projects
+
+Headers:
+
+* x-access-token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjM2MjQ5MDgsImV4cCI6MTUzMzYyNDkwN30.GPf--Qs5ftDqhbj-vBXSiunPKEVIFcd1clS7Rz8CXpE"
+
+Query Parameters:
+
+* projectName (optional)
+* hiringClientId (optional)
+* projectStatusId (optional)
+* tradeId (optional)
+* subcontractorId (optional)
+* orderBy (optional)
+        Valid values:
+            "id",
+            "name",
+            "description",
+            "number",
+            "manager",
+            "address1",
+            "address2",
+            "city",
+            "state",
+            "zipCode",
+            "owner",
+            "statusId",
+            "status",
+            "hiringClientId",
+            "hiringClientName",
+            "contractsTotalAmount",
+            "contractsCount"
+            "timeStamp"
+* orderDirection (optional)
+        Valid values:
+            "ASC",
+            "DESC",
+* pageNumber (optional)
+* pageSize (optional)
+* searchTerm (optional)
+
+Example response OK:
+
+{
+    "success": true,
+    "totalCount": 5,
+    "data": [
+        {
+            "id": 1,
+            "name": "The test project 1",
+            "description": "This is a test project to test log fields",
+            "number": "40793987498NRIO",
+            "manager": "Paul Allen",
+            "address1": "Test street 100",
+            "address2": "Office 100",
+            "city": "Seattle",
+            "state": "WA",
+            "zipCode": "89095",
+            "owner": "John Carter",
+            "statusId": 1,
+            "status": "None",
+            "hiringClientId": 1,
+            "hiringClientName": "HC1",
+            "contractsTotalAmount": 0,
+            "contractsCount": 0,
+            "timeStamp": "2018-02-21T19:51:25.817Z"
+        },
+        {
+            "id": 2,
+            "name": "The test project 2",
+            "description": "This is a test project to test log fields",
+            "number": "40793987498NRIO",
+            "manager": "Steve Jobs",
+            "address1": "Test street 200",
+            "address2": "Office 13 Floor 13",
+            "city": "Bellevue",
+            "state": "WA",
+            "zipCode": "89095",
+            "owner": "Steve Woz",
+            "statusId": 1,
+            "status": "None",
+            "hiringClientId": 1,
+            "hiringClientName": "HC1",
+            "contractsTotalAmount": 0,
+            "contractsCount": 0,
+            "timeStamp": "2018-02-22T14:26:17.270Z"
+        },
+        {
+            "id": 3,
+            "name": "The test project 2",
+            "description": "This is a test project to test log fields",
+            "number": "40793987498NRIO",
+            "manager": "Steve Jobs",
+            "address1": "Test street 200",
+            "address2": "Office 13 Floor 13",
+            "city": "Bellevue",
+            "state": "WA",
+            "zipCode": "89095",
+            "owner": "Steve Woz",
+            "statusId": 1,
+            "status": "None",
+            "hiringClientId": 1,
+            "hiringClientName": "HC1",
+            "contractsTotalAmount": 50000,
+            "contractsCount": 1,
+            "timeStamp": "2018-02-22T14:32:05.627Z"
+        },
+        {
+            "id": 4,
+            "name": "The test project 2",
+            "description": "Update test ",
+            "number": "40793987498NRIO",
+            "manager": "Steve Jobs",
+            "address1": "Test street 200",
+            "address2": "Office 13 Floor 13",
+            "city": "Bellevue",
+            "state": "WA",
+            "zipCode": "89095",
+            "owner": "Steve Woz",
+            "statusId": 1,
+            "status": "None",
+            "hiringClientId": 1,
+            "hiringClientName": "HC1",
+            "contractsTotalAmount": 50000,
+            "contractsCount": 1,
+            "timeStamp": "2018-02-22T14:33:01.437Z"
+        },
+        {
+            "id": 5,
+            "name": "The test project 2",
+            "description": "This is a test project to test log fields",
+            "number": "40793987498NRIO",
+            "manager": "Steve Jobs",
+            "address1": "Test street 200",
+            "address2": "Office 13 Floor 13",
+            "city": "Bellevue",
+            "state": "WA",
+            "zipCode": "89095",
+            "owner": "Steve Woz",
+            "statusId": 1,
+            "status": "None",
+            "hiringClientId": 1,
+            "hiringClientName": "HC1",
+            "contractsTotalAmount": 0,
+            "contractsCount": 0,
+            "timeStamp": "2018-02-22T14:38:08.637Z"
+        }
+    ]
+}
+
+Example response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+* 10025 = Project not found
+
+
+
+{
+    "success": true,
+    "data": {
+        "projectId": 5
+    }
+}
+
+
+### POST projects > Create a new project
+
+Resource URL: /projects
+
+Headers:
+
+* x-access-token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjM2MjQ5MDgsImV4cCI6MTUzMzYyNDkwN30.GPf--Qs5ftDqhbj-vBXSiunPKEVIFcd1clS7Rz8CXpE"
+
+Sample request body:
+
+    {
+
+    "name":"The test project 2",
+    "description":"This is a test project to test log fields", (optional)
+    "number":"40793987498NRIO", (optional)
+    "manager":"Steve Jobs", (optional)
+    "address1":"Test street 200", (optional)
+    "address2":"Office 13 Floor 13", (optional)
+    "city":"Bellevue", (optional)
+    "state":"WA", (optional)
+    zipCode":"89095", (optional)
+    "owner":"Steve Woz", (optional)
+    "hiringClientId":"1",
+    "statusId":"1"
+    }
+
+Sample response OK:
+
+{
+    "success": true,
+    "data": {
+        "projectId": 5
+    }
+}
+
+Sample response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10004 = This email is already in use
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+### PUT projects > Update a project
+
+Resource URL: /projects
+
+Headers:
+
+* x-access-token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjM2MjQ5MDgsImV4cCI6MTUzMzYyNDkwN30.GPf--Qs5ftDqhbj-vBXSiunPKEVIFcd1clS7Rz8CXpE"
+
+IMPORTANT!!!!: At least one of the optional parameters must be provided 
+
+Sample request body:
+
+    {
+
+    "id":"4",
+    "name":"The test project 2", (optional)
+    "description":"This is a test project to test log fields", (optional)
+    "number":"40793987498NRIO", (optional)
+    "manager":"Steve Jobs", (optional)
+    "address1":"Test street 200", (optional)
+    "address2":"Office 13 Floor 13", (optional)
+    "city":"Bellevue", (optional)
+    "state":"WA", (optional)
+    "zipCode":"89095", (optional)
+    "owner":"Steve Woz", (optional)
+    "hiringClientId":"1", (optional)
+    "statusId":"1" (optional)
+    }
+
+Sample response OK:
+
+{
+    "success": true,
+    "data": {
+        "projectId": 5
+    }
+}
+
+Sample response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10004 = This email is already in use
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired

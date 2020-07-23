@@ -1,0 +1,177 @@
+### GET templates placeholders
+
+Resource URL: /communications/placeholders/
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Query Parameters:
+
+* No parameters
+
+Example response OK:
+
+{
+    "success": true,
+    "data": [
+        {
+            "id": 1,
+            "placeholder": "subcontractor_first_name"
+        }
+    ]
+}
+
+Example response OK:
+
+    {
+      "success": true,
+    }
+
+Example response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+### GET templates
+
+Resource URL: /communications/templates
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Query Parameters:
+
+* templateId (optional)
+* communicationTypeId (optional. Filters templates by communication type id)
+* searchTerm (optional. Use to do a keyword search on templateName, subject and bodyText)
+* pageSize (optional. Use with pageNumber to limit the amount of results)
+* pageNumber (optional. Use with pageSize to paginate the results )
+* orderBy (optional. accepted values are:
+    id,
+    templateName,
+    subject,
+    bodyHTML,
+    bodyText,
+    replacedTemplateId,
+    templateActivityId,
+    communicationTypeId)
+
+* orderDirection (optional. Specifies sorting order direction, can be 'ASC' or 'DESC')
+
+Example response OK:
+
+{
+    "success": true,
+    "data": {
+        "totalCount": 4,
+        "templates": [
+            {
+                "id": 1,
+                "templateName": "firsttemplate",
+                "subject": "reset pass",
+                "bodyHTML": "<html></html>",
+                "bodyText": "text",
+                "replacedTemplateId": null,
+                "templateActivityId": 2,
+                "communicationTypeId": 1
+            },
+            {
+                "id": 2,
+                "templateName": "PasswordRecoveryTemplate",
+                "subject": "Password Recovery",
+                "bodyHTML": "<br>Hello <%- name %>,<br><br>This is your password to login: <%- password %><br>",
+                "bodyText": "Hello <%= name %>, this is your password to login: <%= password%>",
+                "replacedTemplateId": null,
+                "templateActivityId": 2,
+                "communicationTypeId": 1
+            },
+            {
+                "id": 3,
+                "templateName": "UserCreatedTemplate",
+                "subject": "Profile Created",
+                "bodyHTML": "<br>Hello <%- name %>,<br><br>Your profile is ready, here's your password to login: <%- password %><br>",
+                "bodyText": "Hello <%= name %>, your profile is ready, here's your password to login: <%= password%>",
+                "replacedTemplateId": null,
+                "templateActivityId": 2,
+                "communicationTypeId": 1
+            },
+            {
+                "id": 4,
+                "templateName": "PasswordChangedByAdminTemplate",
+                "subject": "Password Changed by Admin",
+                "bodyHTML": "<br>Hello <%- name %>,<br><br>Your password was changed by an Admin, here is the new one: <%- password %><br>",
+                "bodyText": "Hello <%= name %>, your password was changed by an Admin, here is the new one: <%= password%>",
+                "replacedTemplateId": null,
+                "templateActivityId": 2,
+                "communicationTypeId": 1
+            }
+        ]
+    }
+}
+
+### POST template
+Resource URL: /communications/templates
+templateId (optional)
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Sample request body:
+
+    {
+        "templateId: 1,
+        "templateName": "PasswordChangedByAdminTemplate",
+        "subject": "Password Changed by Admin",
+        "bodyHTML": "<br>Hello <%- name %>,<br><br>Your password was changed by an Admin, here is the new one: <%- password %><br>",
+        "bodyText": "Hello <%= name %>, your password was changed by an Admin, here is the new one: <%= password%>",
+        "templateActivityId": 2,
+        "communicationTypeId": 1,
+        "fromAddress": "info@prequalusa.com",
+        "ownerId": 2,
+        "userId": 2
+    }
+
+Example response OK:
+
+    {
+      "success": true,
+    }
+
+Example response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired

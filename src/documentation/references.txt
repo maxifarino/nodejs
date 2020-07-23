@@ -1,0 +1,504 @@
+### GET references
+
+Resource URL: /references
+
+Headers:
+
+* x-access-token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjQxNzIyOTEsImV4cCI6MTUzNDE3MjI5MH0.tGeOBO-4Za1Yu4mPqJpcZ_jWTKbX8sTDaKd7S92WdcU"
+
+Query Parameters:
+
+* referenceId (optional. Get a specific reference by id)
+* typeId (optional. Filter references by typeId)
+* searchTerm (optional. Use to do a keyword search on companyName and contactName)
+* subcontractorId (optional - filter by subcontractor id)
+* submissionId (optional - filter by submission (or savedForm) id)
+* pageSize (optional - size of page)
+* pageNumber (optional - number of page)
+* orderBy (optional. accepted values are: 'type', 'companyName', 'contactName', 'contactEmail', 'contactPhone', 'refDate')
+* orderDirection (optional. Specifies sorting order direction, can be 'ASC' or 'DESC')
+
+Example response OK:
+
+{
+    "success": true,
+    "data": {
+        "totalCount": 1,
+        "references": [
+            {
+                "id": 3,
+                "typeId": 2,
+                "type": "Suppliers",
+                "companyName": "Dummy Corp2",
+                "savedFormId": "1",
+                "contactName": "Bruce Wayne",
+                "contactEmail": "johnsmith@dummycorp.com",
+                "contactPhone": "+11234567890",
+                "refDate": "2018-02-22T19:44:27.873Z"
+            }
+        ],
+        "questions": [
+            {
+                "id": 1,
+                "referenceTypeId": 1,
+                "referenceid": 3,
+                "response": "Excelent",
+                "question": "How was your experience with <subcontractor>?"
+            },
+            {
+                "id": 2,
+                "referenceTypeId": 1,
+                "referenceid": 3,
+                "response": null,
+                "question": "Would you do business with them again?"
+            },
+            {
+                "id": 3,
+                "referenceTypeId": 1,
+                "referenceid": 3,
+                "response": null,
+                "question": "Did you have any issues with them?"
+            },
+            {
+                "id": 4,
+                "referenceTypeId": 2,
+                "referenceid": 3,
+                "response": null,
+                "question": "For how long have you sod them materials/supplies?"
+            },
+            {
+                "id": 5,
+                "referenceTypeId": 2,
+                "referenceid": 3,
+                "response": null,
+                "question": "Do they pay bills in full?"
+            },
+            {
+                "id": 6,
+                "referenceTypeId": 2,
+                "referenceid": 3,
+                "response": null,
+                "question": "Do they pay their bills within the agreed upon timeframe?"
+            },
+            {
+                "id": 7,
+                "referenceTypeId": 3,
+                "referenceid": 3,
+                "response": null,
+                "question": "Would you recommend them?"
+            },
+            {
+                "id": 8,
+                "referenceTypeId": 3,
+                "referenceid": 3,
+                "response": null,
+                "question": "Was business completed up to your expectation?"
+            },
+            {
+                "id": 9,
+                "referenceTypeId": 1,
+                "referenceid": 3,
+                "response": "Barack Obama",
+                "question": "Who was the 44th president of the Unites States?"
+            }
+        ],
+        "submissions": [
+            {
+                "id": 1,
+                "name": "firstForm",
+                "description": "This is the description field of a form",
+                "sumissionDate": "2017-12-12T14:09:03.680Z"
+            }
+        ],
+        "referencesTypesPossibleValues": [
+            {
+                "id": 1,
+                "type": "Both"
+            },
+            {
+                "id": 3,
+                "type": "Projects"
+            },
+            {
+                "id": 2,
+                "type": "Suppliers"
+            }
+        ]
+    }
+}
+
+Example response ERROR:
+
+{
+  	"success": false,
+    	"data": {
+      	"errorCode":99999,
+    	 "description":"Some description related with the problem",
+    	 "error": {} //will have extra info when error is not categorized
+  	 }
+}
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+* 10026 = No references found
+
+
+
+### POST Reference
+
+Resource URL: /references
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Sample request body:
+
+    {
+       	"typeId": 1,
+       	"companyName": "Dummy Corp",
+       	"savedFormId": 1,
+       	"contactName": "John Smith",
+       	"contactEmail": "johnsmith@dummycorp.com",
+       	"contactPhone": "+11234567890"
+    }
+
+Example response OK:
+
+    {
+     	  "success": true,
+        "data": {
+            "referenceId": 2
+        }
+    }
+
+Example response ERROR:
+
+    {
+      	"success": false,
+      	"data": {
+        	"errorCode":99999,
+        	"description":"Some description related with the problem",
+        	"error": {} //will have extra info when error is not categorized
+      	}
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10004 = This email is already in use
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+
+### PUT Reference 
+
+Resource URL: /references
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+All fields are optional except referenceId. At least one of the optional fields must be provided.
+
+Sample request body:
+
+    {
+    	"referenceId":3,
+    	"companyName": "Dummy Corp2",
+    	"savedFormId": 1,
+    	"contactName": "Bruce Wayne",
+    	"contactEmail": "bruce@wayne.com",
+    	"contactPhone": "+11231231234"
+    }
+
+Sample response OK:
+
+	{
+	    "success": true,
+	    "referenceUpdated": true
+	}
+
+Sample response ERROR:
+
+    {
+      	"success": false,
+      	"data": {
+        	"errorCode":99999,
+        	"description":"Some description related with the problem",
+        	"error": {} //will have extra info when error is not categorized
+     	}
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10004 = This email is already in use
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+
+### POST Reference Question
+
+Resource URL: /references/questions
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Sample request body:
+
+    {
+     	"referenceTypeId": 1,
+     	"question": "Who was the 44th president of the United States?"
+    }
+
+Example response OK:
+
+    {
+     	"success": true,
+        "data": {
+            "questionId": 9
+        }
+    }
+
+Example response ERROR:
+
+    {
+     	"success": false,
+      	"data": {
+	        "errorCode":99999,
+	        "description":"Some description related with the problem",
+	        "error": {} //will have extra info when error is not categorized
+      	}
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10004 = This email is already in use
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+
+### PUT Reference Question
+
+Resource URL: /references/questions
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Sample request body:
+
+    {
+     	"questionId": 9,
+     	"question": "Who was the 44th president of the United States?"
+    }
+
+Example response OK:
+
+    {
+      	"success": true,
+    }
+
+Example response ERROR:
+
+    {
+      	"success": false,
+      	"data": {
+	        "errorCode":99999,
+		    "description":"Some description related with the problem",
+	        "error": {} //will have extra info when error is not categorized
+	    }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10004 = This email is already in use
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+
+### GET reference question responses
+
+Resource URL: /references/responses
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Query Parameters:
+
+* referenceId (required)
+
+Example response OK:
+
+{
+    "success": true,
+    "data": [
+        {
+            "id": 1,
+            "referenceTypeId": 1,
+            "referenceQuestionId": 1,
+            "referenceid": 3,
+            "response": "Excelent",
+            "question": "How was your experience with <subcontractor>?"
+        },
+        {
+            "id": 2,
+            "referenceTypeId": 1,
+            "referenceQuestionId": null,
+            "referenceid": 3,
+            "response": null,
+            "question": "Would you do business with them again?"
+        },
+        {
+            "id": 3,
+            "referenceTypeId": 1,
+            "referenceQuestionId": null,
+            "referenceid": 3,
+            "response": null,
+            "question": "Did you have any issues with them?"
+        },
+        {
+            "id": 4,
+            "referenceTypeId": 2,
+            "referenceQuestionId": 4,
+            "referenceid": 3,
+            "response": "TEST1",
+            "question": "For how long have you sod them materials/supplies?"
+        },
+        {
+            "id": 5,
+            "referenceTypeId": 2,
+            "referenceQuestionId": 5,
+            "referenceid": 3,
+            "response": "",
+            "question": "Do they pay bills in full?"
+        },
+        {
+            "id": 6,
+            "referenceTypeId": 2,
+            "referenceQuestionId": 6,
+            "referenceid": 3,
+            "response": "",
+            "question": "Do they pay their bills within the agreed upon timeframe?"
+        },
+        {
+            "id": 7,
+            "referenceTypeId": 3,
+            "referenceQuestionId": null,
+            "referenceid": 3,
+            "response": null,
+            "question": "Would you recommend them?"
+        },
+        {
+            "id": 8,
+            "referenceTypeId": 3,
+            "referenceQuestionId": null,
+            "referenceid": 3,
+            "response": null,
+            "question": "Was business completed up to your expectation?"
+        },
+        {
+            "id": 9,
+            "referenceTypeId": 1,
+            "referenceQuestionId": 9,
+            "referenceid": 3,
+            "response": "Barack Obama",
+            "question": "Who was the 44th president of the Unites States?"
+        }
+    ]
+}
+Example response ERROR:
+
+    {
+     	"success": false,
+      	"data": {
+	        "errorCode":99999,
+	        "description":"Some description related with the problem",
+	        "error": {} //will have extra info when error is not categorized
+      	}
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+* 10027 = No responses found
+
+
+
+### POST Reference Question Response
+
+Resource URL: /references/responses
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Sample request body:
+
+    {
+    	"referenceId":3,
+    	"referenceQuestionId":9,
+    	"response": "Barack Obama"
+    }
+
+Example response OK:
+
+    {
+     	"success": true,
+        "data": {
+            "responseId": 1
+        }
+    }
+
+Example response ERROR:
+
+    {
+      	"success": false,
+      	"data": {
+        	"errorCode":99999,
+        	"description":"Some description related with the problem",
+        	"error": {} //will have extra info when error is not categorized
+      	}
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10004 = This email is already in use
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired

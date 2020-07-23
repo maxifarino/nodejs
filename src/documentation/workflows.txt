@@ -1,0 +1,605 @@
+### GET Workflows components (including parameters, current values and all possible values)
+
+Resource URL: workflows/components
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Query Parameters:
+
+* workflowId
+* resetToDefaultWF (optional, valid values: 'true' or 'false'), if it is set to true the current 
+  wf is removed and the default is cloned, new id is returned in "workflowId" response attribute.
+
+Example response OK:
+
+{
+    "success": true,
+    "workflowId": "25",
+    "components": [
+        {
+            "positionIndex": 1,
+            "current_value": {
+                "componentId": 1,
+                "workflowComponentId": 50,
+                "name": "Send Mail"
+            },
+            "current_parameters": [
+                {
+                    "workflowsComponentsParamsValuesId": 27,
+                    "componentParameterId": 1,
+                    "name": "Mail template",
+                    "value": "SubContractorRegistrationFormTemplate"
+                }
+            ]
+        },
+        {
+            "positionIndex": 2,
+            "current_value": {
+                "componentId": 2,
+                "workflowComponentId": 51,
+                "name": "Wait for time"
+            },
+            "current_parameters": []
+        }
+    ],
+    "possible_values": [
+        {
+            "id": 1,
+            "name": "Send Mail",
+            "parameters": [
+                {
+                    "id": 1,
+                    "name": "Mail template",
+                    "possible_values": [
+                        {
+                            "id": 36,
+                            "value": "BigDInvitiationForPrequalificationTemplate"
+                        },
+                        {
+                            "id": 37,
+                            "value": "BigDPrequalificationPendingSubmissionTemplate"
+                        },
+                        {
+                            "id": 35,
+                            "value": "ClaycoInvitationforPrequalificationTemplate"
+                        },
+                        {
+                            "id": 34,
+                            "value": "ClaycoPrequalificationPendingSubmissionTemplate"
+                        },
+                        {
+                            "id": 38,
+                            "value": "CNYGroupRegistrationRequiredTemplate"
+                        },
+                        {
+                            "id": 33,
+                            "value": "CNYPrequalificationFollowUpTemplate"
+                        },
+                        {
+                            "id": 42,
+                            "value": "CrosslandConstructionPrequalificationRenewalTempla"
+                        },
+                        {
+                            "id": 32,
+                            "value": "CrosslandPreQualFormInvitationTemplate"
+                        },
+                        {
+                            "id": 31,
+                            "value": "CrosslandPrequalInvitationTemplate"
+                        },
+                        {
+                            "id": 30,
+                            "value": "CypressbrookPreQualFormInvitationTemplate"
+                        },
+                        {
+                            "id": 29,
+                            "value": "CypressbrookPrequalificationFormRequiredTemplate"
+                        },
+                        {
+                            "id": 28,
+                            "value": "CypressbrookPreQualInvitationTemplate"
+                        },
+                        {
+                            "id": 46,
+                            "value": "DelAmoConstructionInvitationforPrequalificationTem"
+                        },
+                        {
+                            "id": 47,
+                            "value": "DelAmoConstructionPrequalificationPendingSubmissio"
+                        },
+                        {
+                            "id": 27,
+                            "value": "DeltaPreQualInvitationTemplate"
+                        },
+                        {
+                            "id": 26,
+                            "value": "DeltaPreQualReminderTemplate"
+                        },
+                        {
+                            "id": 51,
+                            "value": "etv"
+                        },
+                        {
+                            "id": 39,
+                            "value": "FCLBuildersInvitationforPrequalificationTemplate"
+                        },
+                        {
+                            "id": 40,
+                            "value": "FCLBuildersPrequalificationPendingSubmissionTempla"
+                        },
+                        {
+                            "id": 41,
+                            "value": "FCLBuildersPrequalificationPendingSubmissionTempla"
+                        },
+                        {
+                            "id": 1,
+                            "value": "firsttemplate"
+                        },
+                        {
+                            "id": 25,
+                            "value": "HathawayDinwiddieConstructionPrequalificationFormR"
+                        },
+                        {
+                            "id": 45,
+                            "value": "HathawayDinwiddieConstructionPrequalificationRenew"
+                        },
+                        {
+                            "id": 24,
+                            "value": "HathawayDinwiddiePreQualFormInvitationTemplate"
+                        },
+                        {
+                            "id": 23,
+                            "value": "HathawayDinwiddiePreQualInvitationTemplate"
+                        },
+                        {
+                            "id": 22,
+                            "value": "InitialRegistrationRound2Template"
+                        },
+                        {
+                            "id": 21,
+                            "value": "NewEnrollmentTemplate"
+                        },
+                        {
+                            "id": 20,
+                            "value": "OmnibuildConstructionPrequalificationFormRequiredT"
+                        },
+                        {
+                            "id": 19,
+                            "value": "OmnibuildPreQualFormInvitationTemplate"
+                        },
+                        {
+                            "id": 18,
+                            "value": "OmnibuildPrequalInvitationTemplate"
+                        },
+                        {
+                            "id": 4,
+                            "value": "PasswordChangedByAdminTemplate"
+                        },
+                        {
+                            "id": 49,
+                            "value": "PasswordChangedByAdminTemplate"
+                        },
+                        {
+                            "id": 50,
+                            "value": "PasswordChangedByAdminTemplate"
+                        },
+                        {
+                            "id": 2,
+                            "value": "PasswordRecoveryTemplate"
+                        },
+                        {
+                            "id": 16,
+                            "value": "PlantConstructionPrequalificationFormRequiredTempl"
+                        },
+                        {
+                            "id": 44,
+                            "value": "PlantConstructionPrequalificationRenewalTemplate"
+                        },
+                        {
+                            "id": 17,
+                            "value": "PlantPreQualFormInvitationTemplate"
+                        },
+                        {
+                            "id": 15,
+                            "value": "PlantPrequalInvitationTemplate"
+                        },
+                        {
+                            "id": 14,
+                            "value": "PleaseRegisterTemplateTemplate"
+                        },
+                        {
+                            "id": 13,
+                            "value": "PrequalFollowUPTemplateTemplate"
+                        },
+                        {
+                            "id": 12,
+                            "value": "PrequalificationFormRequiredTemplate"
+                        },
+                        {
+                            "id": 11,
+                            "value": "QuarterlyUpdateReminderTemplate"
+                        },
+                        {
+                            "id": 10,
+                            "value": "RinaldiPreQualFormInvitationTemplate"
+                        },
+                        {
+                            "id": 9,
+                            "value": "RinaldiPreQualInvitiationTemplate"
+                        },
+                        {
+                            "id": 43,
+                            "value": "SkenderConstructionPrequalificationPendingSubmissi"
+                        },
+                        {
+                            "id": 8,
+                            "value": "SkenderRegistrationTemplate"
+                        },
+                        {
+                            "id": 7,
+                            "value": "SubContractorRegistrationFormTemplate"
+                        },
+                        {
+                            "id": 91,
+                            "value": "SubContractorRegistrationFormTemplate"
+                        },
+                        {
+                            "id": 6,
+                            "value": "TrialGroupPrequalificationFormRequiredTemplate"
+                        },
+                        {
+                            "id": 3,
+                            "value": "UserCreatedTemplate"
+                        },
+                        {
+                            "id": 5,
+                            "value": "WmBlanchardConstructionInvitationforPrequalificati"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "name": "Wait for condition",
+            "parameters": []
+        },
+        {
+            "id": 2,
+            "name": "Wait for time",
+            "parameters": [
+                {
+                    "id": 2,
+                    "name": "Time",
+                    "possible_values": [
+                        {
+                            "id": 0,
+                            "value": 0
+                        },
+                        {
+                            "id": 1,
+                            "value": 1
+                        },
+                        {
+                            "id": 2,
+                            "value": 2
+                        },
+                        {
+                            "id": 3,
+                            "value": 3
+                        },
+                        {
+                            "id": 4,
+                            "value": 4
+                        },
+                        {
+                            "id": 5,
+                            "value": 5
+                        },
+                        {
+                            "id": 6,
+                            "value": 6
+                        },
+                        {
+                            "id": 7,
+                            "value": 7
+                        },
+                        {
+                            "id": 8,
+                            "value": 8
+                        },
+                        {
+                            "id": 9,
+                            "value": 9
+                        },
+                        {
+                            "id": 10,
+                            "value": 10
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+
+Example response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+### GET Workflows
+
+Resource URL: workflows
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Query Parameters:
+
+* hiringClientId
+
+Example response OK:
+
+{
+    "success": true,
+    "data": [
+        {
+            "id": 1,
+            "description": "Subcontractor Invite",
+            "detail": "Subcontractor invitation and registration process",
+            "workflowId": 3
+        },
+        {
+            "id": 2,
+            "description": "Subcontractor Submission",
+            "detail": "Subcontractor information submission process",
+            "workflowId": 4
+        },
+        {
+            "id": 3,
+            "description": "Subcontractor Prequalification",
+            "detail": "Subcontractor prequalification process",
+            "workflowId": null
+        },
+        {
+            "id": 4,
+            "description": "Subcontractor Renewal",
+            "detail": "Subcontractor renewal process (only apply when renewal is required)",
+            "workflowId": null
+        }
+    ]
+}
+Example response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+### GET Components parameters
+
+Resource URL: workflows/component/parameters
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Query Parameters:
+
+* componentId
+
+Example response OK:
+
+	{
+	    "success": true,
+	    "data": [
+	        {
+	            "componentName": "Send Mail",
+	            "componentParameterName": "Mail template",
+	            "parameterValue": "7"
+	        }
+	    ]
+	}
+	
+Example response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+### POST Change SC status id
+
+Resource URL: workflows/changescstatus
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Query Parameters:
+
+* hiringclientId
+* subcontractorId
+* subcontractorStatusId
+
+Example response OK:
+{
+	{
+	    "success": true,
+    }
+}	
+
+Example response ERROR:
+{
+  "success": false,
+  "data": {
+    "errorCode":99999,
+    "description":"Some description related with the problem",
+    "error": {} //will have extra info when error is not categorized
+  }
+}
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+### PUT Modify a workflow
+
+Resource URL: workflows
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Query Parameters:
+
+* id (Workflow Id)
+* hiringclientId
+
+Example response OK:
+
+
+	{
+	    "success": true,
+	    "data": {
+	        "workflowId": "2"
+    }
+}	
+Example response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+
+### POST Create a workflow anbd modify a workflow
+
+Resource URL: workflows/components
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Request:
+
+{
+    "hiringClientId":"4",
+    "workflowTypeId":"1",
+    "components":[
+        {
+            "componentId":"1",
+            "positionIndex":"1",
+            "parameters": [
+                {
+                    "componentParameterId": "1",
+                    "value": "BigDInvitiationForPrequalificationTemplate"
+                },
+                {
+                    "componentParameterId": "2",
+                    "value": "4"
+                }
+            ] 
+        }
+    ]
+}
+
+Example response OK:
+
+
+    {
+        "success": true,
+        "data": {
+            "workflowId": "1"
+    }
+}   
+Example response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+router.get('/workflows/changescstatus', function(req, res){

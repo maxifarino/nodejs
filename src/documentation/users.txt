@@ -1,0 +1,592 @@
+### POST sessiontoken
+
+Resource URL: /users/gettoken
+
+Parameters:
+
+* email (required)
+* password (required)
+
+
+Example response OK:
+
+{
+  {
+    "success": true,
+    "data": {
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJUaXRsZUlkIjowLCJQaG9uZSI6IjExMTExMTExMTEiLCJDZWxsUGhvbmUiOm51bGwsIlRpbWVab25lSWQiOjAsIk11c3RSZW5ld1Bhc3MiOjAsIk11c3RVcGRhdGVQcm9maWxlIjowLCJUaW1lU3RhbXAiOiIyMDE3LTExLTEzVDE0OjI1OjIxLjQ2MFoiLCJSZXBvcnRpbmdSb2xlIjpudWxsLCJSb2xlIjp7IklkIjoxLCJOYW1lIjoiUFEgQWRtaW4iLCJUaW1lU3RhbXAiOiIyMDE3LTExLTEzVDE0OjIzOjUxLjI1N1oiLCJJc1ByZXF1YWxSb2xlIjoxLCJJc0hDUm9sZSI6bnVsbCwiSXNTQ1JvbGUiOm51bGx9LCJUaXRsZSI6eyJJZCI6MCwiVGl0bGUiOiJOb25lIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0yOVQxMTo1NTozMy40NDdaIn0sImlhdCI6MTUyOTA2OTA5NSwiZXhwIjoxNTM5MDY5MDk0fQ.CWWXizl7sn9wiXu7lpf-xDLc-9RITyqX4cgVR9iHwjs",
+        "profile": {
+            "Id": 3,
+            "FirstName": "Luis",
+            "LastName": "Tester2",
+            "Mail": "luis@accelone.com",
+            "RoleID": 1,
+            "IsEnabled": 1,
+            "TitleId": 0,
+            "Phone": "1111111111",
+            "CellPhone": null,
+            "TimeZoneId": 0,
+            "MustRenewPass": 0,
+            "MustUpdateProfile": 0,
+            "TimeStamp": "2017-11-13T14:25:21.460Z",
+            "ReportingRole": null,
+            "Role": {
+                "Id": 1,
+                "Name": "PQ Admin",
+                "TimeStamp": "2017-11-13T14:23:51.257Z",
+                "IsPrequalRole": 1,
+                "IsHCRole": null,
+                "IsSCRole": null
+            },
+            "Title": {
+                "Id": 0,
+                "Title": "None",
+                "TimeStamp": "2017-11-29T11:55:33.447Z"
+            }
+        }
+    }
+}
+
+
+Example response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10008 = User not found
+* 10009 = Invalid password 
+* 10010 = Login error (uncategorized error)
+* 10011 = User is disabled
+
+
+### POST create user (current user)
+
+Resource URL: /users/profile
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Parameters:
+* firstName (optional)
+* lastName (optional)
+* mail (optional)
+* roleId (optional)
+* isEnabled (optional)
+* password (optional)
+* phone (optional)
+* titleId  (optional) (0 is a valid value in case no value is provided)
+* timeZoneId  (optional) (0 is a valid value in case no value is provided)
+* mustRenewPass (optional)
+* mustUpdateProfile (optional)
+
+
+Example response OK:
+
+    {
+      "success": true,
+        "data": {
+          "profileUpdated": "true"
+        }
+    }
+
+Example response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10004 = This email is already in use
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+* 10008 = User not found
+* 10011 = User is disabled
+* 10013 = Invalid email format
+* 10016 = Invalid user title
+* 10017 = Invalid time zone
+
+
+### PUT update user (current user)
+
+Resource URL: /users/profile
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Parameters:
+* id
+* firstName (optional)
+* lastName (optional)
+* mail (optional)
+* roleId (optional)
+* isEnabled (optional)
+* password (optional)
+* phone (optional)
+* titleId  (optional) (0 is a valid value in case no value is provided)
+* timeZoneId  (optional) (0 is a valid value in case no value is provided)
+* mustRenewPass (optional)
+* mustUpdateProfile (optional)
+
+
+Example response OK:
+
+    {
+      "success": true,
+        "data": {
+          "profileUpdated": "true"
+        }
+    }
+
+Example response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10004 = This email is already in use
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+* 10008 = User not found
+* 10011 = User is disabled
+* 10013 = Invalid email format
+* 10016 = Invalid user title
+* 10017 = Invalid time zone
+
+### GET profile
+
+Resource URL: /users/profile
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Parameters:
+
+* none
+
+
+Example response OK:
+
+{
+    "success": true,
+    "data": {
+        "profile": {
+            "Id": 5016,
+            "FirstName": "Juan",
+            "LastName": "Tester",
+            "Mail": "juan@accelone.com",
+            "RoleID": 4,
+            "IsEnabled": 1,
+            "TitleId": 407,
+            "Phone": "1231231234",
+            "CellPhone": "",
+            "TimeZoneId": 0,
+            "MustRenewPass": 0,
+            "MustUpdateProfile": 0,
+            "TimeStamp": "2018-06-18T19:45:46.747Z",
+            "ReportingRole": null,
+            "Role": {
+                "Id": 4,
+                "Name": "Subcontractor",
+                "TimeStamp": "2018-01-02T13:49:12.800Z",
+                "IsPrequalRole": null,
+                "IsHCRole": null,
+                "IsSCRole": 1
+            },
+            "Title": {
+                "Id": 407,
+                "Title": "WEBMASTER",
+                "TimeStamp": "2018-01-10T18:50:44.720Z"
+            },
+            "FirstHiringClientId": null,
+            "FirstSubcontractorId": 1,
+            "MustPayRegistration": true,
+            "MustPayRenewal": false,
+            "MustPayToHCId": 1
+        }
+    }
+}
+
+Example response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+* 10011 = User is disabled
+
+
+
+
+
+
+
+### Check if a mail exists, parameter value is NOT case sensitive
+
+Resource URL: /users/checkmail
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Parameters:
+
+* mail
+
+
+Example response OK:
+
+{
+    "success": true,
+    "data": {
+        "mailExists": true
+    }
+}
+
+Example response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+
+
+### POST change password
+
+Resource URL: /users/change-password
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Parameters:
+
+* oldPassword (required, the current user password)
+* newPassword (required, the new password in a valid format)
+
+
+Example response OK:
+
+    {
+      "success": true,
+      "data": {
+          "passwordChanged": true
+      }
+    }
+
+Example response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+* 10008 = User not found
+* 10011 = User is disabled
+* 10012 = Invalid password format
+
+
+### POST reset password
+
+Resource URL: /users/reset-password
+
+Notes:
+
+* This endpoint will launch a process that sends an email with a new random password
+
+Headers:
+
+* none
+
+Parameters:
+
+* email
+
+
+Example response OK:
+
+    {
+      "success": true,
+      "data": {
+        "passwordChanged": true,
+        "emailSent": true
+      }
+    }
+
+Example response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+* 10008 = User not found
+* 10011 = User is disabled
+
+
+### GET users
+
+Resource URL: /users
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Query Parameters:
+
+* filterPrequalUsers (optional, if included only valid value is 'true')
+* searchTerm (optional, a string to find users with matching mail, name or lastname)
+* roleId (optional, the id of the role to query)
+* hiringClientId (optional, the id of a hiring client)
+* subcontractorId (optional, the id of a subcontractor)
+* enabled (optional, 1 or 0, if nothing is passed the status is ignored)
+* pageSize (optional, use with pageNumber to limit the amount of results)
+* pageNumber (optional, used with pageSize to paginate the results)
+* orderBy (optional, valid values are:id,
+                                      firstName,
+                                      lastName,
+                                      name,
+                                      mail,
+                                      roleID,
+                                      role,
+                                      isEnabled,
+                                      titleId,
+                                      title,
+                                      phone,
+                                      cellPhone,
+                                      timeZoneId,
+                                      timeZone,
+                                      Status,
+                                      mustRenewPass,
+                                      mustUpdateProfile,
+                                      timeStamp
+                                      )
+* orderDirection (optional, valid values are: 'ASC', 'DESC')
+
+Full URL example: 
+
+* /users?pageSize=2&pageNumber=1&orderBy=name&ordersortDirection=ASC
+
+Example response OK:
+
+{
+    "success": true,
+    "data": {
+        "totalCount": 126,
+        "users": [
+            {
+                "id": 1035,
+                "firstName": "104",
+                "lastName": "104",
+                "name": "104 104",
+                "mail": "104@heehh.asda",
+                "roleID": 3,
+                "role": "Hiring Client (Full Access)",
+                "isEnabled": 1,
+                "titleId": 0,
+                "title": "None",
+                "phone": null,
+                "cellPhone": null,
+                "timeZoneId": 13,
+                "timeZone": "(UTC-06:00) Central America",
+                "mustRenewPass": 0,
+                "mustUpdateProfile": 1,
+                "timeStamp": "2018-01-05T12:38:58.610Z"
+            },
+            {
+                "id": 1036,
+                "firstName": "105",
+                "lastName": "105",
+                "name": "105 105",
+                "mail": "105@em.csds",
+                "roleID": 3,
+                "role": "Hiring Client (Full Access)",
+                "isEnabled": 1,
+                "titleId": 0,
+                "title": "None",
+                "phone": null,
+                "cellPhone": null,
+                "timeZoneId": 14,
+                "timeZone": "(UTC-06:00) Central Time (US & Canada)",
+                "mustRenewPass": 0,
+                "mustUpdateProfile": 1,
+                "timeStamp": "2018-01-05T12:41:07.450Z"
+            }
+        ]
+    }
+}
+Example response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+* 10011 = User is disabled
+
+
+
+
+
+### GET profile
+
+Resource URL: /users/brief
+
+Headers:
+
+* x-access-token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjAsIlRpdGxlSWQiOjAsIlBob25lIjoiNDU2NDU2NDU2NCIsIkNlbGxQaG9uZSI6bnVsbCwiVGltZVpvbmVJZCI6MCwiTXVzdFJlbmV3UGFzcyI6MCwiTXVzdFVwZGF0ZVByb2ZpbGUiOjAsIlRpbWVTdGFtcCI6IjIwMTctMTEtMTNUMTQ6MjU6MjEuNDYwWiIsIlJvbGUiOnsiSWQiOjEsIk5hbWUiOiJQUSBBZG1pbiIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMTNUMTQ6MjM6NTEuMjU3WiIsIklzUHJlcXVhbFJvbGUiOjEsIklzSENSb2xlIjpudWxsLCJJc1NDUm9sZSI6bnVsbH0sIlRpbWVab25lIjp7IklkIjowLCJWYWx1ZSI6Ik5vbmUiLCJEZXNjcmlwdGlvbiI6Ik5vbmUiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTI5VDExOjU2OjQ1Ljk0M1oifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjU4ODg1MDcsImV4cCI6MTUzNTg4ODUwNn0.VIMGirEeVIWjSEU2cm8eTX4oiOr4re-pSAplI96TiUw"
+
+Parameters:
+
+* hiringClientId (optional)
+* subcontractorId (optional)
+
+Example response OK:
+
+{
+    "success": true,
+    "users": [
+        {
+            "id": 2,
+            "fullName": "Pablo Tester",
+            "Mail": "pablo@accelone.com"
+        },
+        {
+            "id": 1004,
+            "fullName": "Marcos Tester",
+            "Mail": "marcos@accelone.com"
+        },
+        {
+            "id": 3,
+            "fullName": "Luis Tester2",
+            "Mail": "luis.paradela@accelone.com"
+        },
+        {
+            "id": 2201,
+            "fullName": "Fabricio Santecchia",
+            "Mail": "fabricio@accelone.com"
+        },
+        {
+            "id": 1020,
+            "fullName": "Claudio Henriquez",
+            "Mail": "claudio@accelone.com"
+        }
+    ]
+}
+
+Example response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+* 10011 = User is disabled
+

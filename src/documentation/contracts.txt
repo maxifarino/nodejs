@@ -1,0 +1,328 @@
+### GET Contracts with filters and sorting
+
+Resource URL: /contracts
+
+Headers:
+
+* x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjM2MjQ5MDgsImV4cCI6MTUzMzYyNDkwN30.GPf--Qs5ftDqhbj-vBXSiunPKEVIFcd1clS7Rz8CXpE
+
+Query Parameters:
+
+* id                                      
+* projectId (optional)
+* projectName (optional) 'like' operation, means search names containing the value of this parameter and non case sensitive
+* subcontractorId (optional)
+* subcontractorName (optional) 'like' operation, means search names containing the value of this parameter and non case sensitive
+* orderBy (optional)
+        Valid values:
+            "projectId",
+            "projectName",
+            "subcontractorId",
+            "subcontractorName",
+            "number",
+            "startDate",
+            "endDate",
+            "tradeId",
+            "tradeValue",
+            "tradeDescription",
+            "timeStamp"
+* orderDirection (optional)
+        Valid values:
+            "ASC",
+            "DESC",
+
+Example response OK:
+
+{
+    "success": true,
+    "data": [
+        {
+            "id": 2,
+            "projectId": 3,
+            "projectName": "The test project 2",
+            "contractName": "Test Contract 2",
+            "subcontractorId": 2,
+            "subcontractorName": "SC2",
+            "number": "4809809dLJK",
+            "amount": 50000,
+            "startDate": "2018-02-22T19:09:35.040Z",
+            "endDate": "2018-06-02T19:09:35.040Z",
+            "tradeId": "5",
+            "tradeValue": "350",
+            "tradeDescription": "001000 Solicitation",
+            "timeStamp": "2018-02-22T19:09:35.040Z"
+        }
+    ]
+}
+
+Example response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+
+### POST contracts > Create a new contract
+
+Resource URL: /contracts
+
+Headers:
+
+* x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjM2MjQ5MDgsImV4cCI6MTUzMzYyNDkwN30.GPf--Qs5ftDqhbj-vBXSiunPKEVIFcd1clS7Rz8CXpE
+
+Sample request body:
+
+    {
+        "projectId":"4"
+        "subcontractorId":"2"
+        "number":"4809809dLJK"
+        "startDate":"2018-02-22T19:09:35.040Z"
+        "endDate":"2018-06-02T19:09:35.040Z" (Optional)
+        "tradeId":"5" (Optional)
+        "amount":"50000"
+        "scopeOfWork":"Long test of scope of work to see a long field" (Optional),
+        "name":"this is a test name" (Optional)
+    }
+
+Sample response OK:
+
+{
+    "success": true,
+    "data": {
+        "contractId": 5
+    }
+}
+
+Sample response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10004 = This email is already in use
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+### POST contracts > Create a new contracts with a list as param
+
+Resource URL: /contracts/list
+
+Headers:
+
+* x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjM2MjQ5MDgsImV4cCI6MTUzMzYyNDkwN30.GPf--Qs5ftDqhbj-vBXSiunPKEVIFcd1clS7Rz8CXpE
+
+Sample request body:
+
+{
+    "contractsList": [
+        {
+            "id":"23", (Optional, if sent then an Update is assumed)
+            "projectId":"4",
+            "subcontractorId":"2",
+            "number":"646464dLJK",
+            "startDate":"2018-02-22T19:09:35.040Z",
+            "endDate":"2018-06-02T19:09:35.040Z",
+            "tradeId":"5",
+            "amount":"10000",
+            "scopeOfWork":"Sample contract", (Optional)
+            "name":"this is a test name" (Optional)
+        },
+        {
+            "projectId":"4",
+            "subcontractorId":"2",
+            "number":"545454dLJK",
+            "startDate":"2018-02-22T19:09:35.040Z",
+            "endDate":"2018-06-02T19:09:35.040Z",
+            "tradeId":"5",
+            "amount":"10000",
+            "scopeOfWork":"Another sample contract", (Optional)
+            "name":"this is a test name" (Optional)
+        }
+    ]
+}
+Sample response OK:
+
+{
+    "success": true,
+}
+
+Sample response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10004 = This email is already in use
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+
+
+### PUT contracts > Update a contract
+
+Resource URL: /contracts
+
+Headers:
+
+* x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjM2MjQ5MDgsImV4cCI6MTUzMzYyNDkwN30.GPf--Qs5ftDqhbj-vBXSiunPKEVIFcd1clS7Rz8CXpE
+
+IMPORTANT!!!!: At least one of the optional parameters must be provided 
+
+Sample request body:
+
+    {
+        "id":"4", (optional)
+        "projectId":"4", (optional)
+        "subcontractorId":"2", (optional)
+        "number":"4809809dLJK", (optional)
+        "startDate":"2018-02-22T19:09:35.040Z", (optional)
+        "endDate":"2018-06-02T19:09:35.040Z", (optional)
+        "tradeId":"5", (optional)
+        "amount":"50000", (optional)
+        "scopeOfWork":"Long test of scope of work to see a long field (optional), 
+        "name":"this is a test name" (Optional)
+    }
+
+Sample response OK:
+
+{
+    "success": true,
+    "data": {
+        "contractId": 5
+    }
+}
+
+Sample response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10004 = This email is already in use
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+
+
+
+### PUT contracts > Update a list of contract
+
+Resource URL: /contracts/list
+
+Headers:
+
+* x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjM2MjQ5MDgsImV4cCI6MTUzMzYyNDkwN30.GPf--Qs5ftDqhbj-vBXSiunPKEVIFcd1clS7Rz8CXpE
+
+IMPORTANT!!!!: At least one of the optional parameters must be provided for each element in the list
+
+Sample request body:
+
+{
+    "contractsList": [
+        {
+            "id":"23",
+            "projectId":"4",
+            "subcontractorId":"2",
+            "number":"646464dLJK",
+            "startDate":"2018-02-22T19:09:35.040Z",
+            "endDate":"2018-06-02T19:09:35.040Z",
+            "tradeId":"5",
+            "amount":"10000",
+            "scopeOfWork":"Sample contract", 
+            "name":"this is a test name" (Optional)
+        },
+        {
+            "id":"24",
+            "projectId":"4",
+            "subcontractorId":"2",
+            "number":"545454dLJK",
+            "startDate":"2018-02-22T19:09:35.040Z",
+            "endDate":"2018-06-02T19:09:35.040Z",
+            "tradeId":"5",
+            "amount":"10000",
+            "scopeOfWork":"Another sample contract", 
+            "name":"this is a test name" (Optional)
+        }
+    ]
+}
+
+Sample response OK:
+
+{
+    "success": true,
+    "data": {
+        "contractId": 5
+    }
+}
+
+Sample response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10004 = This email is already in use
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired

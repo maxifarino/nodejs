@@ -1,0 +1,1616 @@
+### GET finances lists for drop downd
+
+Resource URL: /forms/fieldslists
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Query Parameters:
+
+NOTE: At least one of the query parameters must be present in the request. Use both to get a specific result.
+
+Example response OK:
+
+{
+    "success": true,
+    "data": {
+        "subcontractorData": {
+            "subcontractorName": "AAA Test SC",
+            "dateOfPrequal": "2018-03-29T17:59:57.223Z",
+            "dateOfFinancialStatement": "2018-03-29T17:59:57.223Z",
+            "scorecardSourceId": 2,
+            "scorecardSource": "Review",
+            "companyTypeId": 2,
+            "companyType": "S-Corp / LLC",
+            "turnOverRateId": 3,
+            "turnOverRate": "12 Months Ended"
+        },
+        "creditHistoryPossibleValues": [
+            {
+                "value": "1",
+                "description": "GOOD"
+            },
+            {
+                "value": "2",
+                "description": "POOR"
+            },
+            {
+                "value": "3",
+                "description": "RISKY"
+            }
+        ],
+        "legalPossibleValues": [
+            {
+                "value": "1",
+                "description": "GOOD"
+            },
+            {
+                "value": "2",
+                "description": "POOR"
+            },
+            {
+                "value": "3",
+                "description": "RISKY"
+            }
+        ],
+        "referencesPossibleValues": [
+            {
+                "value": "1",
+                "description": "GOOD"
+            },
+            {
+                "value": "2",
+                "description": "POOR"
+            },
+            {
+                "value": "3",
+                "description": "RISKY"
+            }
+        ],
+        "scorecardSourcePossibleValues": [
+            {
+                "id": 2,
+                "name": "Review"
+            },
+            {
+                "id": 3,
+                "name": "Tax Return"
+            },
+            {
+                "id": 4,
+                "name": "Internal"
+            },
+            {
+                "id": 5,
+                "name": "Compilation"
+            },
+            {
+                "id": 6,
+                "name": "Audit"
+            }
+        ],
+        "scorecardCompaniesTypesPossibleValues": [
+            {
+                "id": 1,
+                "name": "None",
+                "taxRate": 0
+            },
+            {
+                "id": 2,
+                "name": "S-Corp / LLC",
+                "taxRate": 0.25
+            },
+            {
+                "id": 3,
+                "name": "C-Corp",
+                "taxRate": 0
+            }
+        ],
+        "scorecardTurnOverRatesPossibleValues": [
+            {
+                "id": 1,
+                "name": "6 Months Ended",
+                "value": 180
+            },
+            {
+                "id": 2,
+                "name": "9 Months Ended",
+                "value": 270
+            },
+            {
+                "id": 3,
+                "name": "12 Months Ended",
+                "value": 360
+            }
+        ],
+        "accountsList": [
+            {
+                "id": 2,
+                "name": "Assets",
+                "groups": [
+                    {
+                        "id": 3,
+                        "name": "Current Assets",
+                        "accounts": [
+                            {
+                                "parentGroupId": 2,
+                                "parentGroup": "Assets",
+                                "groupId": 3,
+                                "groupName": "Current Assets",
+                                "accountId": 3101,
+                                "accountName": "Accounts Receivable",
+                                "value": 0,
+                                "adjustment": 0,
+                                "alwaysVisible": "true",
+                                "orderIndex": 1,
+                                "noteName": null,
+                                "noteDescription": null,
+                                "noteAssignedToUserId": null,
+                                "noteAssignedToRoleId": null,
+                                "noteDateDue": null
+                            },
+                            {
+                                "parentGroupId": 2,
+                                "parentGroup": "Assets",
+                                "groupId": 3,
+                                "groupName": "Current Assets",
+                                "accountId": 11,
+                                "accountName": "Advances to Affiliates",
+                                "value": 654321,
+                                "adjustment": 0,
+                                "alwaysVisible": "false",
+                                "orderIndex": 1,
+                                "noteName": null,
+                                "noteDescription": null,
+                                "noteAssignedToUserId": null,
+                                "noteAssignedToRoleId": null,
+                                "noteDateDue": null
+                            }
+                        ]
+                    },
+                    {
+                        "id": 4,
+                        "name": "PP&E",
+                        "accounts": [
+                            {
+                                "parentGroupId": 2,
+                                "parentGroup": "Assets",
+                                "groupId": 4,
+                                "groupName": "PP&E",
+                                "accountId": 19,
+                                "accountName": "Less Accumulated Depreciation",
+                                "value": -100,
+                                "adjustment": 0
+                            },
+                            {
+                                "parentGroupId": 2,
+                                "parentGroup": "Assets",
+                                "groupId": 4,
+                                "groupName": "PP&E",
+                                "accountId": 18,
+                                "accountName": "Property, Plant & Equipment at Cost",
+                                "value": 181686,
+                                "adjustment": 0
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "basicAccounts": [
+            {
+                "id": 256,
+                "AccountId": 52,
+                "name": "Backlog",
+                "value": 5000000,
+                "AdjustmentValue": 0,
+                "AdjustmentFactor": 0
+            },
+            {
+                "id": 257,
+                "AccountId": 53,
+                "name": "Revenue",
+                "value": 13489379,
+                "AdjustmentValue": 0,
+                "AdjustmentFactor": 0
+            },
+            {
+                "id": 258,
+                "AccountId": 54,
+                "name": "Cost of Goods Sold",
+                "value": 10298937,
+                "AdjustmentValue": 0,
+                "AdjustmentFactor": 0
+            },
+            {
+                "id": 260,
+                "AccountId": 55,
+                "name": "Net Income",
+                "value": 511768,
+                "AdjustmentValue": 0,
+                "AdjustmentFactor": 0
+            },
+            {
+                "id": 261,
+                "AccountId": 56,
+                "name": "Operating Income",
+                "value": 596089,
+                "AdjustmentValue": 0,
+                "AdjustmentFactor": 0
+            }
+        ],
+        "avgProjectAccounts": [
+            {
+                "id": 2182,
+                "AccountId": 57,
+                "name": "Avg Prj yr1",
+                "value": 1650000,
+                "AdjustmentValue": null,
+                "AdjustmentFactor": null
+            },
+            {
+                "id": 2183,
+                "AccountId": 58,
+                "name": "Avg Prj yr2",
+                "value": 4000000,
+                "AdjustmentValue": null,
+                "AdjustmentFactor": null
+            },
+            {
+                "id": 2184,
+                "AccountId": 59,
+                "name": "Avg Prj yr3",
+                "value": 6600000,
+                "AdjustmentValue": null,
+                "AdjustmentFactor": null
+            }
+        ],
+        "avgVolumeAccounts": [
+            {
+                "id": 2185,
+                "AccountId": 62,
+                "name": "Avg Vol yr1",
+                "value": 12646458,
+                "AdjustmentValue": null,
+                "AdjustmentFactor": null
+            },
+            {
+                "id": 2186,
+                "AccountId": 63,
+                "name": "Avg Vol yr2",
+                "value": 11462202,
+                "AdjustmentValue": null,
+                "AdjustmentFactor": null
+            },
+            {
+                "id": 2187,
+                "AccountId": 64,
+                "name": "Avg Vol yr3",
+                "value": 7687351,
+                "AdjustmentValue": null,
+                "AdjustmentFactor": null
+            }
+        ]
+    }
+}
+
+Example response ERROR:
+
+    {
+        "success": false,
+            "data": {
+            "errorCode":99999,
+             "description":"Some description related with the problem",
+             "error": {} //will have extra info when error is not categorized
+         }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+
+### POST finances socrecard accounts and their values
+
+Resource URL: /finances/scorecards
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Request Payload:
+
+{
+  "data":{
+    "update":false,
+    "subcontractorData":{
+      "savedFormId":1,
+      "dateOfPrequal":"2018-03-29T17:59:57.223Z",
+      "dateOfFinancialStatement":"2018-03-29T17:59:57.223Z",
+      "scorecardSourceId":2,
+      "companyTypeId":2,
+      "turnOverRateId":3,
+      "subcontractorId":1,
+      "hiringClientId":1,
+      "financialStatementTypeId":1
+    },
+    "accountsList":[
+      {
+        "accountId":3101,
+        "value":0,
+        "adjustment":0,
+        "note":null
+      },
+      {
+        "accountId":11,
+        "value":654321,
+        "adjustment":0,
+        "note":{
+          "taskId":null,
+          "assignedToUserId":2201,
+          "description":"DESCTEST",
+          "name":"TEST"
+        }
+      },
+      {
+        "accountId":47,
+        "value":1696309,
+        "adjustment":0,
+        "note":null
+      }
+    ],
+    "scorecardConcetpsList":[
+      {
+        "scorecardConceptId":"9",
+        "value":55
+      },
+      {
+        "scorecardConceptId":"10",
+        "value":1
+      },
+      {
+        "scorecardConceptId":"11",
+        "value":1
+      },
+      {
+        "scorecardConceptId":"12",
+        "value":1
+      }
+    ],
+    "basicAccounts":[
+      {
+        "accountId":256,
+        "accountName":"Backlog",
+        "adjustment":"0",
+        "alwaysVisible":true,
+        "value":5000000,
+        "note":{
+          "assignedToUserId":2201,
+          "taskId":null
+        },
+        "account":0
+      },
+      {
+        "accountId":257,
+        "accountName":"Revenue",
+        "adjustment":"0",
+        "alwaysVisible":true,
+        "value":13489379,
+        "note":{
+          "assignedToUserId":2201,
+          "taskId":null
+        },
+        "account":0
+      },
+      {
+        "accountId":258,
+        "accountName":"Cost of Goods Sold",
+        "adjustment":"0",
+        "alwaysVisible":true,
+        "value":10298937,
+        "note":{
+          "assignedToUserId":2201,
+          "taskId":null
+        },
+        "account":0
+      },
+      {
+        "accountId":260,
+        "accountName":"Net Income",
+        "adjustment":"0",
+        "alwaysVisible":true,
+        "value":511768,
+        "note":{
+          "assignedToUserId":2201,
+          "taskId":null
+        },
+        "account":0
+      },
+      {
+        "accountId":261,
+        "accountName":"Operating Income",
+        "adjustment":"0",
+        "alwaysVisible":true,
+        "value":596089,
+        "note":{
+          "assignedToUserId":2201,
+          "taskId":null
+        },
+        "account":0
+      }
+    ],
+    "avgProjectAccounts":[
+      {
+        "accountId":2182,
+        "accountName":"Avg Prj yr1",
+        "adjustment":"0",
+        "hideAdjustment":true,
+        "alwaysVisible":true,
+        "value":1650000,
+        "note":{
+          "assignedToUserId":2201,
+          "taskId":null
+        },
+        "account":0
+      },
+      {
+        "accountId":2183,
+        "accountName":"Avg Prj yr2",
+        "adjustment":"0",
+        "hideAdjustment":true,
+        "alwaysVisible":true,
+        "value":4000000,
+        "note":{
+          "assignedToUserId":2201,
+          "taskId":null
+        },
+        "account":0
+      },
+      {
+        "accountId":2184,
+        "accountName":"Avg Prj yr3",
+        "adjustment":"0",
+        "hideAdjustment":true,
+        "alwaysVisible":true,
+        "value":6600000,
+        "note":{
+          "assignedToUserId":2201,
+          "taskId":null
+        },
+        "account":0
+      }
+    ],
+    "avgVolumeAccounts":[
+      {
+        "accountId":2185,
+        "accountName":"Avg Vol yr1",
+        "adjustment":"0",
+        "hideAdjustment":true,
+        "alwaysVisible":true,
+        "value":12646458,
+        "note":{
+          "assignedToUserId":2201,
+          "taskId":null
+        },
+        "account":0
+      },
+      {
+        "accountId":2186,
+        "accountName":"Avg Vol yr2",
+        "adjustment":"0",
+        "hideAdjustment":true,
+        "alwaysVisible":true,
+        "value":11462202,
+        "note":{
+          "assignedToUserId":2201,
+          "taskId":null
+        },
+        "account":0
+      },
+      {
+        "accountId":2187,
+        "accountName":"Avg Vol yr3",
+        "adjustment":"0",
+        "hideAdjustment":true,
+        "alwaysVisible":true,
+        "value":7687351,
+        "note":{
+          "assignedToUserId":2201,
+          "taskId":null
+        },
+        "account":0
+      }
+    ]
+  }
+}
+
+Example response OK:
+
+{
+    "success": true
+}
+
+Example response OK when "update" parameter is false:
+
+{
+    "success": true,
+    "calcRes": {
+        "calc": {
+            "currentAssets": {
+                "value": 654321,
+                "adjustment": 0,
+                "adjustedBalance": 654321,
+                "taxes": 0
+            },
+            "currentLiabilities": {
+                "value": 0,
+                "adjustment": 0,
+                "adjustedBalance": 0,
+                "taxes": 127942
+            },
+            "currentAssetsAfterTaxes": 654321,
+            "currentLiabilitiesAfterTaxes": 127942,
+            "workingCapital": 526379,
+            "nonCurrentLiabilities": {
+                "value": 0,
+                "adjustment": 0,
+                "adjustedBalance": 0
+            },
+            "totalLiabilities": {
+                "value": 0,
+                "adjustment": 0,
+                "adjustedBalance": 0
+            },
+            "turnOverRate": 360,
+            "totalStakeholdersEquity": {
+                "value": 1696309,
+                "adjustment": 0,
+                "adjustedBalance": 1696309
+            },
+            "debtNetWorth": 0
+        },
+        "basicaccounts": [
+            {
+                "id": 256,
+                "AccountId": 52,
+                "name": "Backlog",
+                "value": 5000000,
+                "AdjustmentValue": 0,
+                "AdjustmentFactor": 0,
+                "orderIndex": 1
+            },
+            {
+                "id": 257,
+                "AccountId": 53,
+                "name": "Revenue",
+                "value": 13489379,
+                "AdjustmentValue": 0,
+                "AdjustmentFactor": 0,
+                "orderIndex": 2
+            },
+            {
+                "id": 258,
+                "AccountId": 54,
+                "name": "Cost of Goods Sold",
+                "value": 10298937,
+                "AdjustmentValue": 0,
+                "AdjustmentFactor": 0,
+                "orderIndex": 3
+            },
+            {
+                "id": 260,
+                "AccountId": 55,
+                "name": "Net Income",
+                "value": 511768,
+                "AdjustmentValue": 0,
+                "AdjustmentFactor": 0,
+                "orderIndex": 5
+            },
+            {
+                "id": 261,
+                "AccountId": 56,
+                "name": "Operating Income",
+                "value": 596089,
+                "AdjustmentValue": 0,
+                "AdjustmentFactor": 0,
+                "orderIndex": 4
+            }
+        ],
+        "calcBasicAccounts": {
+            "totalAR": 0,
+            "totalAP": 0,
+            "costOfBacklog": 3817424.4344383827
+        },
+        "scorecardConcepts": {
+            "currentRatio": {
+                "value": 5.114200184458583,
+                "numericValue": 5.114200184458583,
+                "color": 1,
+                "id": 1
+            },
+            "workingCapitalToBacklog": {
+                "value": 13.788851856538203,
+                "numericValue": 13.788851856538203,
+                "color": 1,
+                "id": 2
+            },
+            "numberDaysOfCash": {
+                "value": 0,
+                "numericValue": 0,
+                "color": 3,
+                "id": 3
+            },
+            "ARturnover": {
+                "value": 0,
+                "numericValue": 0,
+                "color": 1,
+                "id": 4
+            },
+            "APturnover": {
+                "value": 0,
+                "numericValue": 0,
+                "color": 1,
+                "id": 5
+            },
+            "debtNetWorth": {
+                "value": 0,
+                "numericValue": 0,
+                "color": 1,
+                "id": 6
+            },
+            "netWorthBacklog": {
+                "value": 44.435954899250284,
+                "numericValue": 44.435954899250284,
+                "color": 1,
+                "id": 7
+            },
+            "profitability": {
+                "value": "Positive",
+                "numericValue": 1,
+                "color": 1,
+                "id": 8
+            }
+        },
+        "scorecardMainParameters": {
+            "tieRating": 1,
+            "singleProjectLimit": 2631895,
+            "aggregateProjectExposure": 2631895
+        },
+        "calculatedAccounts": {
+            "singleProjectLimitValue": 2631895,
+            "aggregateProjectExposure": 2631895,
+            "totalAccountsReceivable": 0,
+            "totalAccountsPayable": 0,
+            "costOfBacklog": 3817424.4344383827,
+            "totalLiabilities": 0
+        },
+        "ratios": {
+            "currentRatio": 5.114200184458583,
+            "workCapitalToBacklog": 13.788851856538203,
+            "numberOfDaysCash": 13.788851856538203,
+            "ARTurnover": 0,
+            "APTurnover": 0,
+            "debtToNetWorth": 0,
+            "netWorthToBacklog": 0,
+            "profitability": "Positive",
+            "tierRating": 1
+        }
+    }
+}
+Example response ERROR:
+
+    {
+        "success": false,
+        "data": {
+            "errorCode":99999,
+            "description":"Some description related with the problem",
+            "error": {} //will have extra info when error is not categorized
+        }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10004 = This email is already in use
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+
+### GET finances socrecard accounts and their values
+
+Resource URL: /finances/scorecards
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Query Parameters:
+
+NOTE: At least one of the query parameters must be present in the request. Use both to get a specific result.
+
+* savedFormId (optional)
+
+Example response OK:
+
+{
+    "success": true,
+    "data": {
+        "subcontractorData": {
+            "subcontractorName": "AAA Test SC",
+            "dateOfPrequal": "2018-03-29T17:59:57.223Z",
+            "dateOfFinancialStatement": "2018-03-29T17:59:57.223Z",
+            "scorecardSourceId": 2,
+            "scorecardSource": "Review",
+            "companyTypeId": 2,
+            "companyType": "S-Corp / LLC",
+            "turnOverRateId": 3,
+            "turnOverRate": "12 Months Ended"
+        },
+        "creditHistoryPossibleValues": [
+            {
+                "value": "1",
+                "description": "GOOD"
+            },
+            {
+                "value": "2",
+                "description": "POOR"
+            },
+            {
+                "value": "3",
+                "description": "RISKY"
+            }
+        ],
+        "legalPossibleValues": [
+            {
+                "value": "1",
+                "description": "GOOD"
+            },
+            {
+                "value": "2",
+                "description": "POOR"
+            },
+            {
+                "value": "3",
+                "description": "RISKY"
+            }
+        ],
+        "referencesPossibleValues": [
+            {
+                "value": "1",
+                "description": "GOOD"
+            },
+            {
+                "value": "2",
+                "description": "POOR"
+            },
+            {
+                "value": "3",
+                "description": "RISKY"
+            }
+        ],
+        "scorecardSourcePossibleValues": [
+            {
+                "id": 2,
+                "name": "Review"
+            },
+            {
+                "id": 3,
+                "name": "Tax Return"
+            },
+            {
+                "id": 4,
+                "name": "Internal"
+            },
+            {
+                "id": 5,
+                "name": "Compilation"
+            },
+            {
+                "id": 6,
+                "name": "Audit"
+            }
+        ],
+        "scorecardCompaniesTypesPossibleValues": [
+            {
+                "id": 1,
+                "name": "None",
+                "taxRate": 0
+            },
+            {
+                "id": 2,
+                "name": "S-Corp / LLC",
+                "taxRate": 0.25
+            },
+            {
+                "id": 3,
+                "name": "C-Corp",
+                "taxRate": 0
+            }
+        ],
+        "scorecardTurnOverRatesPossibleValues": [
+            {
+                "id": 1,
+                "name": "6 Months Ended",
+                "value": 180
+            },
+            {
+                "id": 2,
+                "name": "9 Months Ended",
+                "value": 270
+            },
+            {
+                "id": 3,
+                "name": "12 Months Ended",
+                "value": 360
+            }
+        ],
+        "accountsList": [
+            {
+                "id": 2,
+                "name": "Assets",
+                "groups": [
+                    {
+                        "id": 3,
+                        "name": "Current Assets",
+                        "accounts": [
+                            {
+                                "parentGroupId": 2,
+                                "parentGroup": "Assets",
+                                "groupId": 3,
+                                "groupName": "Current Assets",
+                                "accountId": 3101,
+                                "accountName": "Accounts Receivable",
+                                "value": 0,
+                                "adjustment": 0,
+                                "alwaysVisible": "true",
+                                "orderIndex": 1,
+                                "noteName": null,
+                                "noteDescription": null,
+                                "noteAssignedToUserId": null,
+                                "noteAssignedToRoleId": null,
+                                "noteDateDue": null
+                            },
+                            {
+                                "parentGroupId": 2,
+                                "parentGroup": "Assets",
+                                "groupId": 3,
+                                "groupName": "Current Assets",
+                                "accountId": 11,
+                                "accountName": "Advances to Affiliates",
+                                "value": 654321,
+                                "adjustment": 0,
+                                "alwaysVisible": "false",
+                                "orderIndex": 1,
+                                "noteName": null,
+                                "noteDescription": null,
+                                "noteAssignedToUserId": null,
+                                "noteAssignedToRoleId": null,
+                                "noteDateDue": null
+                            }
+                        ]
+                    },
+                    {
+                        "id": 4,
+                        "name": "PP&E",
+                        "accounts": [
+                            {
+                                "parentGroupId": 2,
+                                "parentGroup": "Assets",
+                                "groupId": 4,
+                                "groupName": "PP&E",
+                                "accountId": 19,
+                                "accountName": "Less Accumulated Depreciation",
+                                "value": -100,
+                                "adjustment": 0
+                            },
+                            {
+                                "parentGroupId": 2,
+                                "parentGroup": "Assets",
+                                "groupId": 4,
+                                "groupName": "PP&E",
+                                "accountId": 18,
+                                "accountName": "Property, Plant & Equipment at Cost",
+                                "value": 181686,
+                                "adjustment": 0
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "basicAccounts": [
+            {
+                "id": 256,
+                "AccountId": 52,
+                "name": "Backlog",
+                "value": 5000000,
+                "AdjustmentValue": 0,
+                "AdjustmentFactor": 0
+            },
+            {
+                "id": 257,
+                "AccountId": 53,
+                "name": "Revenue",
+                "value": 13489379,
+                "AdjustmentValue": 0,
+                "AdjustmentFactor": 0
+            },
+            {
+                "id": 258,
+                "AccountId": 54,
+                "name": "Cost of Goods Sold",
+                "value": 10298937,
+                "AdjustmentValue": 0,
+                "AdjustmentFactor": 0
+            },
+            {
+                "id": 260,
+                "AccountId": 55,
+                "name": "Net Income",
+                "value": 511768,
+                "AdjustmentValue": 0,
+                "AdjustmentFactor": 0
+            },
+            {
+                "id": 261,
+                "AccountId": 56,
+                "name": "Operating Income",
+                "value": 596089,
+                "AdjustmentValue": 0,
+                "AdjustmentFactor": 0
+            }
+        ],
+        "avgProjectAccounts": [
+            {
+                "id": 2182,
+                "AccountId": 57,
+                "name": "Avg Prj yr1",
+                "value": 1650000,
+                "AdjustmentValue": null,
+                "AdjustmentFactor": null
+            },
+            {
+                "id": 2183,
+                "AccountId": 58,
+                "name": "Avg Prj yr2",
+                "value": 4000000,
+                "AdjustmentValue": null,
+                "AdjustmentFactor": null
+            },
+            {
+                "id": 2184,
+                "AccountId": 59,
+                "name": "Avg Prj yr3",
+                "value": 6600000,
+                "AdjustmentValue": null,
+                "AdjustmentFactor": null
+            }
+        ],
+        "avgVolumeAccounts": [
+            {
+                "id": 2185,
+                "AccountId": 62,
+                "name": "Avg Vol yr1",
+                "value": 12646458,
+                "AdjustmentValue": null,
+                "AdjustmentFactor": null
+            },
+            {
+                "id": 2186,
+                "AccountId": 63,
+                "name": "Avg Vol yr2",
+                "value": 11462202,
+                "AdjustmentValue": null,
+                "AdjustmentFactor": null
+            },
+            {
+                "id": 2187,
+                "AccountId": 64,
+                "name": "Avg Vol yr3",
+                "value": 7687351,
+                "AdjustmentValue": null,
+                "AdjustmentFactor": null
+            }
+        ]
+    }
+}
+
+Example response ERROR:
+
+    {
+        "success": false,
+            "data": {
+            "errorCode":99999,
+             "description":"Some description related with the problem",
+             "error": {} //will have extra info when error is not categorized
+         }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+
+
+### GET finances socrecard concepts
+
+Resource URL: /finances/scorecardsconcepts
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Query Parameters:
+
+NOTE: At least one of the query parameters must be present in the request. Use both to get a specific result.
+
+* savedFormId (optional)
+
+Example response OK:
+
+{
+    "success": true,
+    "data": {
+        "avgProjectAccounts": [
+            {
+                "id": 2182,
+                "AccountId": 57,
+                "name": "Largest Contract Yr 1",
+                "value": 1650000,
+                "AdjustmentValue": null,
+                "AdjustmentFactor": null,
+                "orderIndex": null
+            },
+            {
+                "id": 2183,
+                "AccountId": 58,
+                "name": "Largest Contract Yr 2",
+                "value": 4000000,
+                "AdjustmentValue": null,
+                "AdjustmentFactor": null,
+                "orderIndex": null
+            },
+            {
+                "id": 2184,
+                "AccountId": 59,
+                "name": "Largest Contract Yr 3",
+                "value": 6600000,
+                "AdjustmentValue": null,
+                "AdjustmentFactor": null,
+                "orderIndex": null
+            }
+        ],
+        "avgVolumeAccounts": [
+            {
+                "id": 2185,
+                "AccountId": 62,
+                "name": "Annual Revenue Yr 1",
+                "value": 12646458,
+                "AdjustmentValue": null,
+                "AdjustmentFactor": null,
+                "orderIndex": null
+            },
+            {
+                "id": 2186,
+                "AccountId": 63,
+                "name": "Annual Revenue Yr 2",
+                "value": 11462202,
+                "AdjustmentValue": null,
+                "AdjustmentFactor": null,
+                "orderIndex": null
+            },
+            {
+                "id": 2187,
+                "AccountId": 64,
+                "name": "Annual Revenue Yr 3",
+                "value": 7687351,
+                "AdjustmentValue": null,
+                "AdjustmentFactor": null,
+                "orderIndex": null
+            }
+        ],
+        "subcontractorData": {
+            "subcontractorName": "AAA SC 1",
+            "tradeName": "000000 Architectural",
+            "dateOfPrequal": "2018-03-29T17:59:57.223Z",
+            "dateOfFinancialStatement": "2018-03-29T17:59:57.223Z"
+        },
+        "scorecardMainParameters": {
+            "tieRating": 1,
+            "singleProjectLimit": "$5104167",
+            "aggregateProjectExposure": "$6359202"
+        },
+        "scorecardConcepts": [
+            {
+                "id": 1,
+                "scorecardConceptId": 1,
+                "name": "Current Ratio",
+                "value": "1.88",
+                "color": 1
+            },
+            {
+                "id": 2,
+                "scorecardConceptId": 2,
+                "name": "Working Capital to Backlog",
+                "value": "61.23%",
+                "color": 1
+            },
+            {
+                "id": 3,
+                "scorecardConceptId": 3,
+                "name": "Number of Days Cash",
+                "value": "8.19",
+                "color": 2
+            },
+            {
+                "id": 4,
+                "scorecardConceptId": 4,
+                "name": "AR Turnover",
+                "value": "92.36",
+                "color": 2
+            },
+            {
+                "id": 5,
+                "scorecardConceptId": 5,
+                "name": "AP Turnover",
+                "value": "49.98",
+                "color": 1
+            },
+            {
+                "id": 6,
+                "scorecardConceptId": 6,
+                "name": "Debt to Net Worth",
+                "value": "1.71",
+                "color": 1
+            },
+            {
+                "id": 7,
+                "scorecardConceptId": 7,
+                "name": "Net Worth to Backlog",
+                "value": "44.44%",
+                "color": 1
+            },
+            {
+                "id": 8,
+                "scorecardConceptId": 8,
+                "name": "Profitability",
+                "value": "Positive",
+                "color": 1
+            },
+            {
+                "id": 9,
+                "scorecardConceptId": 9,
+                "name": "Bank Line Usage",
+                "value": "< 60% Usage",
+                "color": 1
+            },
+            {
+                "id": 13,
+                "scorecardConceptId": 10,
+                "name": "Legal",
+                "value": "Minor Liens and/or Suits Pending",
+                "color": 1
+            },
+            {
+                "id": 14,
+                "scorecardConceptId": 11,
+                "name": "References",
+                "value": "Positive Project Reference and No Supplier Reference",
+                "color": 1
+            },
+            {
+                "id": 15,
+                "scorecardConceptId": 12,
+                "name": "Credit History",
+                "value": "Good",
+                "color": 1
+            }
+        ],
+        "commentary": "COMMENTARY TEST 2",
+        "emrAccounts": [
+            {
+                "id": 2182,
+                "index": 0,
+                "name": "Yr 1",
+                "value": "2.0"
+            },
+            {
+                "id": 2183,
+                "index": 1,
+                "name": "Yr 2",
+                "value": "1.5"
+            },
+            {
+                "id": 2184,
+                "index": 3,
+                "name": "Yr 3",
+                "value": "1.0"
+            }
+        ]
+    }
+}
+
+Example response ERROR:
+
+    {
+        "success": false,
+            "data": {
+            "errorCode":99999,
+             "description":"Some description related with the problem",
+             "error": {} //will have extra info when error is not categorized
+         }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+### GET finances account values
+
+Resource URL: /finances/accounts/values
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Query Parameters:
+
+NOTE: At least one of the query parameters must be present in the request. Use both to get a specific result.
+
+* accountId (optional)
+* savedFormId (optional)
+
+Example response OK:
+
+    {
+        "success": true,
+        "data": {
+            "totalCount": 1,
+            "accountValues": [
+                {
+                    "id": 1,
+                    "savedFormId": 2,
+                    "accountId": 1,
+                    "value": 32456,              
+                },
+                {
+                    "id": 2,
+                    "savedFormId": 3,
+                    "accountId": 1,
+                    "value": 3324.56,              
+                },
+            ]
+        }
+    }
+
+Example response ERROR:
+
+    {
+      	"success": false,
+        	"data": {
+          	"errorCode":99999,
+        	 "description":"Some description related with the problem",
+        	 "error": {} //will have extra info when error is not categorized
+      	 }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+* 10030 = No account value found
+
+
+
+### POST Account value
+
+Resource URL: /finances/accounts/values
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Sample request body:
+
+    {
+        "savedFormId": 3,
+        "accountId": 1,
+        "value": 3324.56,              
+    }
+
+Example response OK:
+
+    {
+          "success": true,
+        "data": {
+            "accountValueId": 2
+        }
+    }
+
+Example response ERROR:
+
+    {
+        "success": false,
+        "data": {
+            "errorCode":99999,
+            "description":"Some description related with the problem",
+            "error": {} //will have extra info when error is not categorized
+        }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10004 = This email is already in use
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+
+### POST Account
+
+Resource URL: /finances/accounts
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Sample request body:
+
+    {
+        "groupId":1,
+        "hiringClientId": 1,
+        "name": "First Account",
+        "accountTypeId": 1
+    }
+
+Example response OK:
+
+    {
+        "success": true,
+        "data": {
+            "accountId": 4
+        }
+    }
+
+Example response ERROR:
+
+    {
+        "success": false,
+        "data": {
+            "errorCode":99999,
+            "description":"Some description related with the problem",
+            "error": {} //will have extra info when error is not categorized
+        }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10004 = This email is already in use
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+
+### GET finances accounts
+
+Resource URL: /finances/accounts
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Query Parameters:
+
+NOTE: At least one of the query parameters must be present in the request. Use both to get a specific result.
+
+* accountId (optional. Get a specific account)
+* groupId (optional. Filter accounts by groupId)
+* hiringClientId (optional. Filter accounts by hiringclientId)
+* pageSize (optional. Use with pageNumber to limit the amount of results)
+* pageNumber (optional. Use with pageSize to paginate the results )
+
+Example response OK:
+
+    {
+        "success": true,
+        "data": {
+            "totalCount": 4,
+            "accounts": [
+                {
+                    "id": 1,
+                    "groupId": 1,
+                    "hiringClientId": 1,
+                    "name": "Default Account"
+                },
+                {
+                    "id": 2,
+                    "groupId": 1,
+                    "hiringClientId": 1,
+                    "name": "Second Account"
+                },
+                {
+                    "id": 3,
+                    "groupId": 1,
+                    "hiringClientId": 1,
+                    "name": "Another account"
+                },
+                {
+                    "id": 4,
+                    "groupId": 1,
+                    "hiringClientId": 1,
+                    "name": "First Account"
+                }
+            ]
+        }
+    }
+
+Example response ERROR:
+
+    {
+        "success": false,
+            "data": {
+            "errorCode":99999,
+             "description":"Some description related with the problem",
+             "error": {} //will have extra info when error is not categorized
+         }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+* 10031 = No account found
+
+
+
+### PUT Account
+
+Resource URL: /finances/accounts
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Sample request body:
+
+    {
+        "accountId": 2,
+        "groupId": 1,
+        "hiringClientId": 44,
+        "name": "Some random Account"
+    }
+
+Example response OK:
+
+    {
+        "success": true,
+        "data": {
+            "accountUpdated": true
+        }
+    }
+
+Example response ERROR:
+
+    {
+        "success": false,
+        "data": {
+            "errorCode":99999,
+            "description":"Some description related with the problem",
+            "error": {} //will have extra info when error is not categorized
+        }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10004 = This email is already in use
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+
+### PUT Account Values
+
+Resource URL: /finances/accounts/values
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Sample request body:
+
+    {
+        "savedFormId": 1,
+        "accountValues" : [
+            {
+                "accountId": 1,
+                "value": 1111,44
+                "adjustmentValue": 323,44,
+                "adjustmentFactor": null
+            },
+            {
+                "accountId": 2,
+                "value": 2222,44
+                "adjustmentValue": null,
+                "adjustmentFactor": 0,05
+            },
+            {
+                "accountId": 3,
+                "value": 3333,44
+                "adjustmentValue": null,
+                "adjustmentFactor": null
+            }
+        ]
+    }
+
+Example response OK:
+
+    {
+        "success": true,
+        "data": {
+            "accountValueUpdated": true
+        }
+    }
+
+Example response ERROR:
+
+    {
+        "success": false,
+        "data": {
+            "errorCode":99999,
+            "description":"Some description related with the problem",
+            "error": {} //will have extra info when error is not categorized
+        }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10004 = This email is already in use
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired

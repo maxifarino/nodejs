@@ -1,0 +1,203 @@
+### User must have Admin Role to use these endpoints
+
+
+### POST create user
+
+Resource URL: /admins/create-user 
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Parameters:
+
+* firstName (required)
+* lastName (required)
+* email (required, must have a valid format)
+* roleId (required, must be a valid role id)
+* password (optional, a random password is generated if empty)
+* phone (optional)
+* timeZoneId (required)
+* mustRenewPass (required)
+* hiringClientId (optional, if coming from Hiring Client value must be passed)
+* subContractorId (optional, if coming from Subcontractor value must be passed)
+
+Example response OK:
+
+    {
+      "success": true,
+        "data": {
+          "userCreated": "true",
+          "emailSent": true
+        }
+    }
+
+Example response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10004 = This email is already in use
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+* 10008 = User not found
+* 10011 = User is disabled
+* 10013 = Invalid email format
+* 10014 = Invalid role
+* 10015 = The user is not allowed to do that
+
+
+### POST enable user
+
+Resource URL: /admins/enable-user
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Parameters:
+
+* userId (required)
+* enable (required, 1 to enable 0 to disable)
+
+
+Example response OK:
+
+    {
+      "success": true,
+        "data": {
+            "IsEnabled": "1"
+        }
+    }
+
+Example response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+* 10008 = User not found
+* 10011 = User is disabled
+* 10015 = The user is not allowed to do that
+
+
+### POST change user role
+
+Resource URL: /admins/change-user-role
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Parameters:
+
+* userId (required)
+* roleId (required)
+
+
+Example response OK:
+
+    {
+      "success": true,
+        "data": {
+            "RoleID": "1"
+        }
+    }
+
+Example response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+* 10008 = User not found
+* 10011 = User is disabled
+* 10015 = The user is not allowed to do that
+
+
+### POST change password
+
+Resource URL: /admins/change-user-password
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Parameters:
+
+* userId (required)
+* password (optional, ramdom password is genereted if no password is passed)
+* forceRenew (optional, "true" or "false" to force a password change when user logs in)
+
+
+Example response OK:
+
+    {
+      "success": true,
+      "data": {
+          "passwordChanged": true,
+          "emailSent": true
+      }
+    }
+
+Example response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+* 10008 = User not found
+* 10011 = User is disabled
+* 10015 = The user is not allowed to do that
+

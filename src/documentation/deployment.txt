@@ -1,0 +1,87 @@
+## Front End 
+
+### Steps:
+
+* Connect through ssh so the current process is not killed
+	
+		ssh root@104.236.90.5
+
+* Go to the frontend folder
+
+		cd /opt/certfocus/certfocus_frontend
+
+* Update the current branch (master) using your credentials
+
+		git pull
+
+* Install new dependencies if necessary
+
+		npm install
+
+* Create a new build 
+
+		npm run build
+
+* Continue on Deployment Section
+
+
+## Back End 
+
+### Steps:
+
+* Connect through ssh so the current process is not killed
+	
+		ssh root@104.236.90.5
+
+* Go to the backend folder
+
+		cd /opt/certfocus/certfocus_backend
+
+* Update the current branch (master) using your credentials
+
+		git pull
+
+* Install new dependencies if necessary
+
+		npm install
+
+* Continue on Deployment Section
+
+
+## Deployment
+
+### Steps:
+
+* Go to digital ocean and login
+* Go to the droplet named ubuntu-1gb-nyc3-01 and access the console
+* Kill the current process if any, pressing Ctrl + C
+* If the console is not currently on the folder "certfocus", go there
+
+		cd /opt/certfocus/
+
+* To start the backend and front end run:
+
+		npm start
+
+
+## Notes:
+
+If the mssql server process is killed during the deployment, you can use these commands:
+
+* Check status
+
+		systemctl status mssql-server
+
+* Stop server
+
+		sudo systemctl stop mssql-server
+
+* Start server
+
+		sudo systemctl start mssql-server
+
+* Restart server
+
+		sudo systemctl restart mssql-server
+
+

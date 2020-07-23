@@ -1,0 +1,184 @@
+### POST language files
+
+Resource URL: /languages/files
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Generates all language files and saves them in the server.
+
+Example response OK:
+
+    {
+      "success": true
+    }
+
+
+### GET language urls
+
+Resource URL: /languages/urls
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Returns the language file url for the specified hiring client or sub contractor. If no id is provided, will return default language url.
+
+Query Parameters:
+
+* hiringClientId (optional)
+* subContractorId (optional)
+
+
+Example response OK:
+
+	{
+	    "success": true,
+	    "languageUrl": "http://104.236.90.5:8888/langs/1.json"
+	}
+
+
+### POST language clone
+
+Resource URL: /languages/clone
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Clones the specified language in the database.
+
+Fields: 
+
+* languageId (required. Specifies the source language to be cloned)
+* newLanguageName (optional. If field is not provided, the cloned language will have the same name as its source)
+
+Sample request: 
+	{
+	   "languageId": 1, 
+	   "newLanguageName": "fourth language"
+	}
+
+Example response OK:
+
+    {
+      "success": true
+    }
+
+
+### GET language keys
+
+Resource URL: /languages/keys
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Returns the dictionary key/value pairs for a specified language.
+
+Query Parameters:
+
+* languageId (optional but either hiringClientId or languageId MUST be provided)
+* hiringClientId (optional but either hiringClientId or languageId MUST be provided)
+
+Example response OK:
+
+	{
+	    "success": true,
+	    "data": {
+	        "languageId": "1",
+	        "totalCount": 192,
+	        "dictionary": [
+	            {
+	                "keyId": 1,
+	                "keyName": "auth_common_AuthFormHeader_title",
+	                "value": "Welcome to your Dashboard"
+	            },
+	            {
+	                "keyId": 2,
+	                "keyName": "auth_common_AuthFormHeader_subtitle",
+	                "value": "Please Sign in"
+	            },
+	            {
+	                "keyId": 3,
+	                "keyName": "auth_login_signIn",
+	                "value": "Sign in"
+	            },
+	            {
+              		"keyId": 4,
+              		"keyName": "auth_login_recoverPasswordLink",
+              		"value": "Forgot your password?"
+            	},
+	            {
+	                "keyId": 5,
+	                "keyName": "auth_login_userNameRequired",
+	                "value": "Username is required"
+	            },
+	            {
+	                "keyId": 6,
+	                "keyName": "auth_login_passwordRequired",
+	                "value": "Password is required"
+	            }
+	        ]
+        }
+    }
+
+
+### PUT language values
+
+Resource URL: /languages/values
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Updates values for a specified languages dictionary.
+
+Fields: 
+
+* languageId (optional but either hiringClientId or languageId MUST be provided)
+* hiringClientId (optional but either hiringClientId or languageId MUST be provided)
+* dictionary (requred. Array with all the key/value pairs to be updated.)
+
+Sample request: 
+	{
+		"languageId": 2,
+		"dictionary": [
+			{
+		    	"keyId": 2,
+		        "value": "Please Sign in HC8"
+		    },
+		    {
+		        "keyId": 3,
+		        "value": "Sign in?!?!"
+		    }
+		]
+	}
+
+Example response OK:
+
+    {
+      "success": true
+    }
+
+
+Example response ERROR:
+
+	{
+		"success": false,
+		"data": {
+			"errorCode":99999,
+			"description":"Some description related with the problem",
+			"error": {} //will have extra info when error is not categorized
+		}
+	}
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired

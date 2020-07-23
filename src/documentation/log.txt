@@ -1,0 +1,256 @@
+### Get Log modules
+
+Resource URL: /log/modules'
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Query Parameters:
+* No parameters are required
+
+* NOTE that fields is case sensitive right now.
+
+Sample response OK:
+
+{
+    "success": true,
+    "data": [
+        {
+            "id": 11,
+            "name": "Contracts"
+        },
+        {
+            "id": 2,
+            "name": "Financials"
+        },
+        {
+            "id": 1,
+            "name": "Forms"
+        },
+        {
+            "id": 3,
+            "name": "HirinClients"
+        },
+        {
+            "id": 4,
+            "name": "Messages"
+        },
+        {
+            "id": 7,
+            "name": "Projects"
+        },
+        {
+            "id": 5,
+            "name": "References"
+        },
+        {
+            "id": 6,
+            "name": "Subcontractors"
+        },
+        {
+            "id": 8,
+            "name": "Tasks"
+        },
+        {
+            "id": 9,
+            "name": "Users"
+        },
+        {
+            "id": 10,
+            "name": "Workflow"
+        }
+    ]
+}
+Sample response ERROR:
+
+  {
+    "success": false,
+    "data": {
+      "errorCode":99999,
+      "description":"Some description related with the problem",
+      "error": {} //will have extra info when error is not categorized
+    }
+  }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+
+### Get Log users 
+
+Resource URL: /log/users
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Query Parameters:
+* No parameters are required
+
+* NOTE that fields is case sensitive right now.
+
+Sample response OK:
+
+{
+    "success": true,
+    "data": [
+        {
+            "id": 1020,
+            "name": "Claudio Henriquez"
+        },
+        {
+            "id": 2185,
+            "name": "d686794 d686794"
+        },
+        {
+            "id": 2172,
+            "name": "Jhon Buendia"
+        },
+        {
+            "id": 3,
+            "name": "Luis Tester2"
+        },
+        {
+            "id": 1110,
+            "name": "mmtester22 mmtest"
+        },
+        {
+            "id": 2,
+            "name": "Pablo Tester"
+        }
+    ]
+}
+
+Sample response ERROR:
+
+  {
+    "success": false,
+    "data": {
+      "errorCode":99999,
+      "description":"Some description related with the problem",
+      "error": {} //will have extra info when error is not categorized
+    }
+  }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+### Get Log entries
+
+Resource URL: /log
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Query Parameters:
+* eventType (optional)
+* userId (optional)
+* payload (optional)
+* timeStamp (optional)
+* orderBy (optional) Valid values: name, readableDescription, timeStamp
+* orderDirection (optional) Valid values: asc, desc
+* searchTerm (optional. Use to do a keyword search on Readable Description and  User)
+* systemModuleId (optional. Filter by system module - list available with Get /log/modules)
+
+* NOTE that fields is case sensitive right now.
+
+Sample response OK:
+
+{
+    "success": true,
+    "data": {
+        "totalCount": 1,
+        "logEntries": [
+            {
+                "id": 2106,
+                "eventType": 1018,
+                "description": "PUT//api/hiringclients/userrelation",
+                "readableDescription": "Modified a hiringClient - user relation",
+                "userId": 2,
+                "name": "Pablo Tester",
+                "payload": "2177",
+                "timeStamp": "2018-03-08T18:01:10.430Z"
+            }
+        ]
+    }
+}
+Sample response ERROR:
+
+  {
+    "success": false,
+    "data": {
+      "errorCode":99999,
+      "description":"Some description related with the problem",
+      "error": {} //will have extra info when error is not categorized
+    }
+  }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+* 10020 = No log entries found
+
+
+### POST Add Log event entry
+
+Resource URL: /log
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Body Parameters:
+* eventType (a valid Id of LogEventTypes table)
+* userId (Id of the user that performed the event, it must be a valid user id in the Users table )
+* payload (a free string that should containt at least the Ids of the original transaction)
+
+* NOTE that fields is case sensitive right now.
+
+Sample response OK:
+
+    {
+        "success": true
+    }
+
+
+Sample response ERROR:
+
+  {
+    "success": false,
+    "data": {
+      "errorCode":99999,
+      "description":"Some description related with the problem",
+      "error": {} //will have extra info when error is not categorized
+    }
+  }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+* 10020 = No log entries found

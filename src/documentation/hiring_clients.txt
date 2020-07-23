@@ -1,0 +1,556 @@
+### POST hiringclients upload logo
+
+Resource URL: /hiringclients/logo
+
+Headers:
+
+* x-access-token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjMzMDE1MjcsImV4cCI6MTUzMzMwMTUyNn0.H_qQmTfazdjg_DH8HPj8yiYzMqv3Or1mrRE06gctLG4"
+
+* Content-Type = "application/json"
+
+Post Parameters:
+
+* hiringClientId (optional)
+* logoFile (Image type form data field)
+
+Sample response OK (Returns hcId, which is the Id of the created HC):
+
+{
+    "success": true,
+}
+
+Sample response ERROR:
+
+{
+    "success": false,
+    "data": {
+        "errorCode": 10003,
+        "description": "Invalid data.",
+        "error": {}
+    }
+}
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+### GET hiring client detail
+
+Resource URL: /hiringclientdetail
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Query Parameters:
+
+* hiringClientId (optional)
+* hiringClinetName (optional) - Name should be exactly the same (comparisson is NOT case sensitive)
+
+If no parameter is provided it will return an empty response
+
+Sample response OK:
+
+{
+    "success": true,
+    "data": [
+        {
+            "id": 1,
+            "name": "Base Hiring Client",
+            "parentHiringClientId": null,
+            "registrationUrl": "hc2.prequalusa.com",
+            "country": "not available",
+            "phone": "1654654877",
+            "address1": "My test road 454",
+            "address2": "not available",
+            "city": "Seattle",
+            "state": "WA",
+            "zipCode": "88885",
+            "phone2": "not available",
+            "fax": "not available",
+            "subcontractorFee": 9.99,
+            "subcontractFeeRegMsg": null,
+            "subcontractFeeRenewMsg": null,
+            "timeStamp": "2017-12-26T15:58:42.913Z",
+            "baseHCUrl": ".prequalusa.com",
+            "subdomain": "hc2",
+            "contactId": 2,
+            "contactName": "Pablo Tester",
+            "logo": "/9j/4AAQSkZJRgABAQEBLAEsAAD//
+            .............................................................
+            //Ma6CnZSzqZuJk4h2ZZMTt4AJp/7T//Z"
+        }
+    ]
+}
+
+Sample response ERROR:
+
+  {
+    "success": false,
+    "data": {
+      "errorCode":99999,
+      "description":"Some description related with the problem",
+      "error": {} //will have extra info when error is not categorized
+    }
+  }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+* 10019 = No Hiring clients found
+
+
+
+
+### GET list of users unlinked to a HC or linked to a relative HC
+
+Resource URL: /hiringclients/unlinkedusers
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Query Parameters:
+
+* hiringClientId 
+
+Sample response OK:
+
+{
+    "success": true,
+    "data": [
+        {
+            "Id": 1035,
+            "UserFullName": "104 104"
+        },
+        {
+            "Id": 2178,
+            "UserFullName": "aJhon Buendia"
+        },
+        {
+            "Id": 2179,
+            "UserFullName": "aJhon Buendia"
+        },
+        {
+            "Id": 1152,
+            "UserFullName": "any1001 any1001"
+        },
+        {
+            "Id": 2173,
+            "UserFullName": "c26625 c26625"
+        },
+        {
+            "Id": 1020,
+            "UserFullName": "Claudio Henriquez"
+        },
+        {
+            "Id": 1021,
+            "UserFullName": "Claudio Henriquez"
+        },
+        {
+            "Id": 2182,
+            "UserFullName": "d128163 d128163"
+        },
+        {
+            "Id": 2180,
+            "UserFullName": "hola hola"
+        },
+        {
+            "Id": 2172,
+            "UserFullName": "Jhon Buendia"
+        },
+        {
+            "Id": 2174,
+            "UserFullName": "Jhon Buendia"
+        },
+        {
+            "Id": 1048,
+            "UserFullName": "Juan goldes"
+        },
+        {
+            "Id": 1062,
+            "UserFullName": "Luis Tester"
+        },
+        {
+            "Id": 1063,
+            "UserFullName": "Luis Tester"
+        },
+        {
+            "Id": 1064,
+            "UserFullName": "Luis Tester"
+        }
+    ]
+}
+
+Sample response ERROR:
+
+  {
+    "success": false,
+    "data": {
+      "errorCode":99999,
+      "description":"Some description related with the problem",
+      "error": {} //will have extra info when error is not categorized
+    }
+  }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+
+
+
+### GET hiring clients
+
+Resource URL: /hiringclients
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Query Parameters:
+
+* userId (optional)
+* subcontractorId (optional)
+* onlyParents (optional. Filter hiring clients by those who can be or are parents. Admitted values are 'true' or 'false')
+* orderBy (optional. accepted values are: 'id','name','registrationUrl','country','phone','contactName' and 'state')
+* orderDirection (optional. Specifies sorting order direction, can be 'ASC' or 'DESC')
+* pageSize (optional. Use with pageNumber to limit the amount of results)
+* pageNumber (optional. Use with pageSize to paginate the results )
+* searchTerm (optional. Use to do a keyword search on Name, Contact Name, Email and Phone)
+* summary (optional, any value is valid)
+
+Sample response OK:
+
+{
+    "success": true,
+    "data": {
+        "totalCount": 13,
+        "hiringClients": [
+            {
+                "id": 1,
+                "name": "HC1",
+                "registrationUrl": "someurl/registration",
+                "country": "United States",
+                "phone": "+1(206)-123-4567",
+                "state": null,
+                "contactName": "Luis Tester2"
+            },
+            {
+                "id": 2,
+                "name": "HC2",
+                "registrationUrl": "someurl/registration",
+                "country": "United States",
+                "phone": "+1(206)-123-4567",
+                "state": null,
+                "contactName": "Luis Tester2"
+            }
+        ]
+    }
+}
+
+Sample response ERROR:
+
+  {
+    "success": false,
+    "data": {
+      "errorCode":99999,
+      "description":"Some description related with the problem",
+      "error": {} //will have extra info when error is not categorized
+    }
+  }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+* 10019 = No Hiring clients found
+
+
+### POST Create a hiring client
+Resource URL: /hiringclients
+
+Headers:
+
+* x-access-token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjMzMDE1MjcsImV4cCI6MTUzMzMwMTUyNn0.H_qQmTfazdjg_DH8HPj8yiYzMqv3Or1mrRE06gctLG4"
+
+* Content-Type = "application/json"
+
+Post Parameters:
+
+* name
+* parentHiringClientId (optional)
+* subdomain
+* country
+* phone
+* phone2 (optional)
+* fax
+* address1
+* address2 (optional)
+* city
+* state
+* zipCode
+
+Sample response OK (Returns hcId, which is the Id of the created HC):
+
+{
+    "success": true,
+    "data": {
+        "hcId": 4
+    }
+}
+
+Sample response ERROR:
+
+{
+    "success": false,
+    "data": {
+        "errorCode": 10003,
+        "description": "Invalid data.",
+        "error": {}
+    }
+}
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+
+
+### GET hiring clients count
+
+Resource URL: /hiringclients/count
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Sample response OK:
+
+	{
+	    "success": true,
+	    "data": {
+	        "totalCount": 2
+	    }
+	}
+
+
+Sample response ERROR:
+
+  {
+    "success": false,
+    "data": {
+      "errorCode":99999,
+      "description":"Some description related with the problem",
+      "error": {} //will have extra info when error is not categorized
+    }
+  }
+  
+### GET hiring clients related users
+
+Resource URL: /hiringclients/users
+  
+Query Parameters:
+
+* hiringClientId
+
+{
+    "success": true,
+    "data": [
+        {
+            "id": 1035,
+            "firstName": "104",
+            "lastName": "104",
+            "mail": "104@heehh.asda"
+        },
+        {
+            "id": 3,
+            "firstName": "Luis",
+            "lastName": "Tester2",
+            "mail": "Luis@accelone.com"
+        },
+        {
+            "id": 2,
+            "firstName": "Pablo",
+            "lastName": "Tester",
+            "mail": "pablo@accelone.com"
+        },
+        {
+            "id": 1051,
+            "firstName": "test123",
+            "lastName": "test456",
+            "mail": "testjuan4567@accelone.com"
+        },
+        {
+            "id": 1044,
+            "firstName": "testhc2",
+            "lastName": "testhc2",
+            "mail": "testhc2@hot.cm"
+        }
+    ]
+}
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+* 10008 = No User found
+
+
+### POST Link hiring client and user
+
+Resource URL: /hiringclients/userrelation
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+* Content-Type = "application/json"
+
+Post Parameters:
+
+* userId
+* hiringClientId
+
+
+Sample response OK:
+
+{
+    "success": true
+}
+
+Sample response ERROR:
+
+{
+    "success": false,
+    "data": {
+        "errorCode": 10003,
+        "description": "Invalid data.",
+        "error": {}
+    }
+}
+
+Sample response ERROR trying to save a record already in the DB:
+
+{
+    "success": false,
+    "data": {
+        "errorCode": 10001,
+        "description": "MSSQL error.",
+        "error": {
+            "code": "EREQUEST",
+            "number": 2627,
+            "lineNumber": 1,
+            "state": 1,
+            "class": 14,
+            "serverName": "ubuntu-1gb-nyc3",
+            "procName": "",
+            "originalError": {
+                "info": {
+                    "number": 2627,
+                    "state": 1,
+                    "class": 14,
+                    "message": "Violation of PRIMARY KEY constraint 'PK_Users_HiringClients'. Cannot insert duplicate key in object 'dbo.Users_HiringClients'. The duplicate key value is (2, 2).",
+                    "serverName": "ubuntu-1gb-nyc3",
+                    "procName": "",
+                    "lineNumber": 1,
+                    "name": "ERROR",
+                    "event": "errorMessage"
+                }
+            },
+            "name": "RequestError",
+            "precedingErrors": []
+        }
+    }
+}
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+
+### PUT hiringClient_user relations
+
+Resource URL: /hiringclients/userrelation
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+* Content-Type = "application/json"
+
+Replaces the current hiringClient_user relations for the ones specified in the body.
+
+Sample request body:
+
+    {
+        "userId": 2,
+        "hiringClientIds": [34, 17, 16]
+    }
+
+Sample response OK:
+
+{
+    "success": true,
+    "relationsUpdated": true
+}
+
+Sample response ERROR:
+
+{
+    "success": false,
+    "data": {
+        "errorCode": 10003,
+        "description": "Invalid data.",
+        "error": {}
+    }
+}
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+

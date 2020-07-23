@@ -1,0 +1,280 @@
+### POST Task
+
+Resource URL: /tasks
+
+Headers:
+
+* x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjIzMjMyMDksImV4cCI6MTUzMjMyMzIwOH0.mkJBLh4LV-Ruh8z1vS16UiweBDBEy3yYSjP_qLSnW3c
+
+NOTE: assignedToUserId and assignedToRoleId fields are mutually exclusive. Only one of them is required.
+
+Sample request body:
+
+    {
+    	"name": "First task",
+    	"description":"description of first task",
+    	"typeId": 1,
+    	"assetId": 1, (Id of the related asset type)
+    	"assetTypeId": 1, (1 = HiringClient, 2 = Subcontractor)
+    	"dateDue": "2018-02-27T14:28:00",
+    	"assignedToUserId":2, (optional)
+    	"assignedToRoleId":3, (optional)
+        "tasksPriorityId":3,
+        "contactTypeId":1,
+        "subcontractorId":1
+    }
+
+Example response OK:
+
+    {
+     	"success": true,
+    	"data": {
+            "taskId": 2
+        }
+    }
+
+Example response ERROR:
+
+    {
+      	"success": false,
+      	"data": {
+        	"errorCode":99999,
+        	"description":"Some description related with the problem",
+        	"error": {} //will have extra info when error is not categorized
+      	}
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10004 = This email is already in use
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+
+### PUT task 
+
+Resource URL: /tasks
+
+Headers:
+
+* x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjIzMjMyMDksImV4cCI6MTUzMjMyMzIwOH0.mkJBLh4LV-Ruh8z1vS16UiweBDBEy3yYSjP_qLSnW3c
+
+All fields are optional except taskId. At least one of the optional fields must be provided.
+
+Sample request body:
+
+{
+	"taskId": 1017,
+    "name": "First task",
+    "description":"description of first task",
+    "typeId": 1,
+    "assetId": 1,
+    "assetTypeId": 1,
+    "dateDue": "2018-02-27T14:28:00",
+    "assignedToUserId":2, (optional)
+    "assignedToRoleId":3, (optional)
+    "tasksPriorityId":3,
+    "subcontractorId":1,
+    "contactTypeId":1,
+    "completed":true
+}
+
+Sample response OK:
+
+{
+    "success": true,
+    "data": {
+        "taskId": 2442
+    }
+}
+Sample response ERROR:
+
+    {
+      	"success": false,
+      	"data": {
+        	"errorCode":99999,
+        	"description":"Some description related with the problem",
+        	"error": {} //will have extra info when error is not categorized
+     	}
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10004 = This email is already in use
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+
+
+### GET tasks
+
+Resource URL: /tasks
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Query Parameters:
+
+
+* taskId (optional. Get a specific task by id)
+* hiringClientId (optional)
+* subcontractorId (optional)
+* typeId (optional. Filter tasks by typeId)
+* statusId (optional. Filter tasks by statusId)
+* assetId (Id of the asset type)
+* assetTypeId (1 = HiringClient, 2 = Subcontractor)
+* assignedToUserId (optional. Filter tasks by userId it is assigned to)
+* assignedToRoleId (optional. Filter tasks by assignedToRoleId it is assigned to)
+* searchTerm (optional. Use to do a keyword search on 'name' and 'description' )
+* dateDue
+* enteredDate
+* modifiedDate
+* orderDirection (optional - valid values 'ASC' or 'DESC')
+* orderBy (optional - valid values:
+                'id',
+                'name',
+                'description',
+                'typeId',
+                'statusId',
+                'assetId',
+                'assetTypeId',
+                'enteredDate',
+                'enteredByUserId',
+                'modifiedDate',
+                'modifyByUserId',
+                'assignedToUserId',
+                'assignedToRoleId',
+                'type',
+                'status',
+                'assetType',
+                'enteredByUser',
+                'modifyByUser',
+                'assignedToUser',
+                'assignedToRole',
+                'dateDue',
+                'hiringClient',
+                'subcontractor'
+                )
+
+
+Example response OK:
+
+{
+    "success": true,
+    "data": {
+        "totalCount": 11,
+        "tasks": {
+            "tasksList": [
+               {
+                    "id": 2446,
+                    "name": "Wed May 16 2018 12:30:17 GMT-0300 (-03) - TEST",
+                    "description": "This is a test task detail",
+                    "typeId": 2,
+                    "type": null,
+                    "statusId": 1,
+                    "status": null,
+                    "assetId": 1,
+                    "assetTypeId": 1,
+                    "assetType": "HiringClient",
+                    "enteredDate": "2018-05-16T15:30:20.223Z",
+                    "enteredByUserId": 3,
+                    "enteredByUser": "Luis ",
+                    "modifiedDate": "2018-05-16T15:30:20.223Z",
+                    "modifyByUserId": 3,
+                    "modifyByUser": "Luis ",
+                    "assignedToUserId": 3,
+                    "assignedToUser": "Luis ",
+                    "assignedToRoleId": null,
+                    "assignedToRole": null,
+                    "dateDue": "2018-05-16T00:00:00.000Z",
+                    "dueDate": "2018-05-16T00:00:00.000Z",
+                    "tasksPriorityId": 2,
+                    "ContactTypeId": null,
+                    "contactType": "",
+                    "tasksPriority": "2-Normal",
+                    "hiringClient": "HC 1",
+                    "subcontractor": "AAA SC 1",
+                    "subcontractorId": 1,
+                    "hc_sc_pair": {
+                        "hiringClientId": 1,
+                        "subcontractorId": 1
+                    }
+                }
+            ],
+            "ContactsTypesPossibleValues": [
+                {
+                    "id": 1,
+                    "type": "Email"
+                },
+                {
+                    "id": 2,
+                    "type": "Phone"
+                }
+            ],
+            "StatusPossibleValues": [
+                {
+                    "id": 1,
+                    "status": "WIP"
+                },
+                {
+                    "id": 2,
+                    "status": "Completed"
+                }
+            ],
+            "TaskTypesPossibleValues": [
+                {
+                    "id": 1,
+                    "type": "Note"
+                },
+                {
+                    "id": 2,
+                    "type": "Task"
+                }
+            ],
+            "PriorityPossibleValues": [
+                {
+                    "id": 1,
+                    "name": "1-High"
+                },
+                {
+                    "id": 2,
+                    "name": "2-Normal"
+                },
+                {
+                    "id": 3,
+                    "name": "3-Low"
+                }
+            ]
+        }
+    }
+}
+
+Example response ERROR:
+
+    {
+      	"success": false,
+        	"data": {
+          	"errorCode":99999,
+        	 "description":"Some description related with the problem",
+        	 "error": {} //will have extra info when error is not categorized
+      	 }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+* 10029 = No tasks found

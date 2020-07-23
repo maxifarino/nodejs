@@ -1,0 +1,32 @@
+## Steps:
+
+* Clone backend and frontend repositories in the same folder
+* In the same folder create a text file and name it package.json
+
+		nano package.json
+
+* Add this content to the file
+
+		{
+		  "name": "certfocus-root",
+		  "version": "1.0.0",
+		  "scripts": {
+		    "client": "cd certfocus_backend/nodeapp/ && npm start",
+		    "server": "cd certfocus_frontend/ && serve -s build",
+		    "start": "concurrent \"npm run client\" \"npm run server\" "
+		  },
+		  "devDependencies": {
+		    "concurrently": "^1.0.0"
+		  }
+		}
+
+* Run npm install
+* Make sure serve is installed
+
+		serve --version
+
+* If not installed, install it globally with:
+
+		npm install -g serve
+
+

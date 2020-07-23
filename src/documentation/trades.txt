@@ -1,0 +1,263 @@
+### POST add or udpate trades
+
+Resource URL: /trades
+
+Headers:
+
+* x-access-token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjMyODEwNDgsImV4cCI6MTUzMzI4MTA0N30.Pr3DnL31ZRCM2yrp0TA9cjONads8pzpbQWp1_DJNIhE"
+
+Query Parameters:
+
+{
+    "hiringClientId":"1",
+    "tradesList": [
+        {
+            "id": 2, // Id this is an update
+            "description": "Test description", // optional
+            "orderIndex": 1
+        },
+        {
+            "value": "999", // No id this is an insert
+            "description": "Test Trade",
+            "orderIndex": 2
+        }
+    ]
+}
+
+
+Example response OK:
+
+    {
+      "success": true      
+    }
+
+Example response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+* 10011 = User is disabled
+
+
+
+### GET Trades by hc
+
+Resource URL: /tradesbyhc
+
+Headers:
+
+* x-access-token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjMyODEwNDgsImV4cCI6MTUzMzI4MTA0N30.Pr3DnL31ZRCM2yrp0TA9cjONads8pzpbQWp1_DJNIhE"
+
+Query Parameters:
+
+* hiringClientId
+* pageSize (optional)
+* pageNumber (optional)
+
+Example response OK:
+
+{
+    "success": true,
+    "totalCount": 246,
+    "tradesList": [
+        {
+            "id": 985,
+            "value": "None",
+            "description": "None",
+            "orderIndex": 0
+        },
+        {
+            "id": 986,
+            "value": "625",
+            "description": "Other",
+            "orderIndex": 2
+        },
+        {
+            "id": 987,
+            "value": "623",
+            "description": "000000 Architectural",
+            "orderIndex": 3
+        },
+        {
+            "id": 988,
+            "value": "624",
+            "description": "Heavy Civil Construction",
+            "orderIndex": 4
+        },
+        {
+            "id": 989,
+            "value": "350",
+            "description": "001000 Solicitation",
+            "orderIndex": 5
+        },
+        {
+            "id": 990,
+            "value": "351",
+            "description": "002000 Instructions for Procurement",
+            "orderIndex": 6
+        },
+        {
+            "id": 991,
+            "value": "352",
+            "description": "003000 Available Information",
+            "orderIndex": 7
+        },
+        {
+            "id": 992,
+            "value": "353",
+            "description": "004000 Procurement Forms and Supplements",
+            "orderIndex": 8
+        },
+        {
+            "id": 993,
+            "value": "354",
+            "description": "005000 Contracting Forms and Supplements",
+            "orderIndex": 9
+        },
+        {
+            "id": 994,
+            "value": "355",
+            "description": "006000 Project Forms",
+            "orderIndex": 10
+        }
+    ]
+}
+
+Example response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+* 10011 = User is disabled
+
+
+### GET Trades by logged user id
+
+Resource URL: /tradesbyuserid
+
+Headers:
+
+* x-access-token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiRmlyc3ROYW1lIjoiTHVpcyIsIkxhc3ROYW1lIjoiVGVzdGVyMiIsIk1haWwiOiJsdWlzLnBhcmFkZWxhQGFjY2Vsb25lLmNvbSIsIlJvbGVJRCI6MSwiSXNFbmFibGVkIjoxLCJJc0NvbnRhY3QiOjEsIlRpdGxlSWQiOjAsIlBob25lIjoiNDY0NjQ2NDY0NjQ2IiwiQ2VsbFBob25lIjpudWxsLCJUaW1lWm9uZUlkIjo5LCJNdXN0UmVuZXdQYXNzIjowLCJNdXN0VXBkYXRlUHJvZmlsZSI6MCwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyNToyMS40NjBaIiwiUm9sZSI6eyJJZCI6MSwiTmFtZSI6IlBRIEFkbWluIiwiVGltZVN0YW1wIjoiMjAxNy0xMS0xM1QxNDoyMzo1MS4yNTdaIn0sIlRpbWVab25lIjp7IklkIjo5LCJWYWx1ZSI6IlBhY2lmaWMgRGF5bGlnaHQgVGltZSIsIkRlc2NyaXB0aW9uIjoiKFVUQy0wODowMCkgUGFjaWZpYyBUaW1lIChVUyAmIENhbmFkYSkiLCJUaW1lU3RhbXAiOiIyMDE3LTExLTMwVDE1OjQ5OjUxLjA2MFoifSwiVGl0bGUiOnsiSWQiOjAsIlRpdGxlIjoiTm9uZSIsIlRpbWVTdGFtcCI6IjIwMTctMTEtMjlUMTE6NTU6MzMuNDQ3WiJ9LCJpYXQiOjE1MjMyODEwNDgsImV4cCI6MTUzMzI4MTA0N30.Pr3DnL31ZRCM2yrp0TA9cjONads8pzpbQWp1_DJNIhE"
+
+Query Parameters:
+
+* pageSize (optional)
+* pageNumber (optional)
+
+Example response OK:
+
+{
+    "success": true,
+    "totalCount": 246,
+    "tradesList": [
+        {
+            "id": 985,
+            "value": "None",
+            "description": "None",
+            "orderIndex": 0
+        },
+        {
+            "id": 986,
+            "value": "625",
+            "description": "Other",
+            "orderIndex": 2
+        },
+        {
+            "id": 987,
+            "value": "623",
+            "description": "000000 Architectural",
+            "orderIndex": 3
+        },
+        {
+            "id": 988,
+            "value": "624",
+            "description": "Heavy Civil Construction",
+            "orderIndex": 4
+        },
+        {
+            "id": 989,
+            "value": "350",
+            "description": "001000 Solicitation",
+            "orderIndex": 5
+        },
+        {
+            "id": 990,
+            "value": "351",
+            "description": "002000 Instructions for Procurement",
+            "orderIndex": 6
+        },
+        {
+            "id": 991,
+            "value": "352",
+            "description": "003000 Available Information",
+            "orderIndex": 7
+        },
+        {
+            "id": 992,
+            "value": "353",
+            "description": "004000 Procurement Forms and Supplements",
+            "orderIndex": 8
+        },
+        {
+            "id": 993,
+            "value": "354",
+            "description": "005000 Contracting Forms and Supplements",
+            "orderIndex": 9
+        },
+        {
+            "id": 994,
+            "value": "355",
+            "description": "006000 Project Forms",
+            "orderIndex": 10
+        }
+    ]
+}
+
+Example response ERROR:
+
+    {
+      "success": false,
+      "data": {
+        "errorCode":99999,
+        "description":"Some description related with the problem",
+        "error": {} //will have extra info when error is not categorized
+      }
+    }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+* 10011 = User is disabled

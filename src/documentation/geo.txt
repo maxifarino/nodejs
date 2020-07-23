@@ -1,0 +1,289 @@
+### Get States
+
+Resource URL: /geo/states
+
+Headers:
+
+* x-access-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjgyODE4OTQzYjY4ODU2NDA1ODg5OTkiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCR6allubDlBeTJxcFJtQzdoeTF4bFouNTRyd2h4VUtVZVMvb29tMkd2Wm5Qb3JLbHJZeHBWeSIsIl9fdiI6MH0.rewmbxX97b4nIhZazfJgEh37wVnr-Q5ImQQXzIdA3Qw"
+
+Query Parameters:
+* No parameters are reuiqred
+
+Sample response OK:
+
+{
+    "success": true,
+    "subcontratorTieRates": [
+        {
+            "Id": 1,
+            "Name": "Alabama",
+            "ShortName": "AL"
+        },
+        {
+            "Id": 2,
+            "Name": "Alaska",
+            "ShortName": "AK"
+        },
+        {
+            "Id": 3,
+            "Name": "Arizona",
+            "ShortName": "AZ"
+        },
+        {
+            "Id": 4,
+            "Name": "Arkansas",
+            "ShortName": "AR"
+        },
+        {
+            "Id": 5,
+            "Name": "California",
+            "ShortName": "CA"
+        },
+        {
+            "Id": 6,
+            "Name": "Colorado",
+            "ShortName": "CO"
+        },
+        {
+            "Id": 7,
+            "Name": "Connecticut",
+            "ShortName": "CT"
+        },
+        {
+            "Id": 8,
+            "Name": "Delaware",
+            "ShortName": "DE"
+        },
+        {
+            "Id": 9,
+            "Name": "Florida",
+            "ShortName": "FL"
+        },
+        {
+            "Id": 10,
+            "Name": "Georgia",
+            "ShortName": "GA"
+        },
+        {
+            "Id": 11,
+            "Name": "Hawaii",
+            "ShortName": "HI"
+        },
+        {
+            "Id": 12,
+            "Name": "Idaho",
+            "ShortName": "ID"
+        },
+        {
+            "Id": 13,
+            "Name": "Illinois",
+            "ShortName": "IL"
+        },
+        {
+            "Id": 14,
+            "Name": "Indiana",
+            "ShortName": "IN"
+        },
+        {
+            "Id": 15,
+            "Name": "Iowa",
+            "ShortName": "IA"
+        },
+        {
+            "Id": 16,
+            "Name": "Kansas",
+            "ShortName": "KS"
+        },
+        {
+            "Id": 17,
+            "Name": "Kentucky[E]",
+            "ShortName": "KY"
+        },
+        {
+            "Id": 18,
+            "Name": "Louisiana",
+            "ShortName": "LA"
+        },
+        {
+            "Id": 19,
+            "Name": "Maine",
+            "ShortName": "ME"
+        },
+        {
+            "Id": 20,
+            "Name": "Maryland",
+            "ShortName": "MD"
+        },
+        {
+            "Id": 21,
+            "Name": "Massachusetts[E]",
+            "ShortName": "MA"
+        },
+        {
+            "Id": 22,
+            "Name": "Michigan",
+            "ShortName": "MI"
+        },
+        {
+            "Id": 23,
+            "Name": "Minnesota",
+            "ShortName": "MN"
+        },
+        {
+            "Id": 24,
+            "Name": "Mississippi",
+            "ShortName": "MS"
+        },
+        {
+            "Id": 25,
+            "Name": "Missouri",
+            "ShortName": "MO"
+        },
+        {
+            "Id": 26,
+            "Name": "Montana",
+            "ShortName": "MT"
+        },
+        {
+            "Id": 27,
+            "Name": "Nebraska",
+            "ShortName": "NE"
+        },
+        {
+            "Id": 28,
+            "Name": "Nevada",
+            "ShortName": "NV"
+        },
+        {
+            "Id": 29,
+            "Name": "New Hampshire",
+            "ShortName": "NH"
+        },
+        {
+            "Id": 30,
+            "Name": "New Jersey",
+            "ShortName": "NJ"
+        },
+        {
+            "Id": 31,
+            "Name": "New Mexico",
+            "ShortName": "NM"
+        },
+        {
+            "Id": 32,
+            "Name": "New York",
+            "ShortName": "NY"
+        },
+        {
+            "Id": 33,
+            "Name": "North Carolina",
+            "ShortName": "NC"
+        },
+        {
+            "Id": 34,
+            "Name": "North Dakota",
+            "ShortName": "ND"
+        },
+        {
+            "Id": 35,
+            "Name": "Ohio",
+            "ShortName": "OH"
+        },
+        {
+            "Id": 36,
+            "Name": "Oklahoma",
+            "ShortName": "OK"
+        },
+        {
+            "Id": 37,
+            "Name": "Oregon",
+            "ShortName": "OR"
+        },
+        {
+            "Id": 38,
+            "Name": "Pennsylvania[E]",
+            "ShortName": "PA"
+        },
+        {
+            "Id": 39,
+            "Name": "Rhode Island[F]",
+            "ShortName": "RI"
+        },
+        {
+            "Id": 40,
+            "Name": "South Carolina",
+            "ShortName": "SC"
+        },
+        {
+            "Id": 41,
+            "Name": "South Dakota",
+            "ShortName": "SD"
+        },
+        {
+            "Id": 42,
+            "Name": "Tennessee",
+            "ShortName": "TN"
+        },
+        {
+            "Id": 43,
+            "Name": "Texas",
+            "ShortName": "TX"
+        },
+        {
+            "Id": 44,
+            "Name": "Utah",
+            "ShortName": "UT"
+        },
+        {
+            "Id": 45,
+            "Name": "Vermont",
+            "ShortName": "VT"
+        },
+        {
+            "Id": 46,
+            "Name": "Virginia[E]",
+            "ShortName": "VA"
+        },
+        {
+            "Id": 47,
+            "Name": "Washington",
+            "ShortName": "WA"
+        },
+        {
+            "Id": 48,
+            "Name": "West Virginia",
+            "ShortName": "WV"
+        },
+        {
+            "Id": 49,
+            "Name": "Wisconsin",
+            "ShortName": "WI"
+        },
+        {
+            "Id": 50,
+            "Name": "Wyoming",
+            "ShortName": "WY"
+        }
+    ]
+}
+
+Sample response ERROR:
+
+  {
+    "success": false,
+    "data": {
+      "errorCode":99999,
+      "description":"Some description related with the problem",
+      "error": {} //will have extra info when error is not categorized
+    }
+  }
+
+Possible error codes:
+
+* 10000 = Backend error
+* 10001 = MSSQL error (uncategorized error)
+* 10003 = Invalid Data (missing or wrong parameters)
+* 10005 = No token provided
+* 10006 = Failed to authenticate token
+* 10007 = The token is expired
+* 10020 = No log entries found
